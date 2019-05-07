@@ -1,0 +1,30 @@
+.text-block
+  background-color: rgba(255, 255, 255, .5)
+  padding: 45px
+  color: $textColor
+
+  &__content
+    font-size: 19px
+
+    @include tablet
+      font-size: 16px
+
+  &__list
+    list-style: none
+    padding: 0
+
+  &__item
+    position: relative
+    margin-bottom: 42px
+    padding-left: 70px
+    line-height: 1.1
+    &:before
+      content: ''
+      position: absolute
+      background: url("../images/arrow-li.png") no-repeat 50% 50%
+      background-size: contain
+      width: 60px
+      height: 62px
+      top: 50%
+      left: 0
+      transform: translateY(-50%)

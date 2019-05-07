@@ -1,0 +1,39 @@
+.product-slider
+
+  &__item
+    width: 312px
+    margin: 20px 30px
+    -webkit-box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.5)
+    -moz-box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.5)
+    box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.5)
+
+.slide-arrow
+  background-color: transparent
+  width: 38px
+  height: 76px
+  border: none
+  position: absolute
+  top: 50%
+  transform: translateY(-50%)
+  z-index: 10
+  cursor: pointer
+
+  &:focus
+    outline: none
+
+.next-arrow
+  background: url("../images/arrow-left.png") no-repeat 50% 50%
+  background-size: contain
+  left: -30px
+
+  @include mobile
+    left: -12px
+
+.prev-arrow
+  background: url("../images/arrow-right.png") no-repeat 50% 50%
+  background-size: contain
+  right: -30px
+
+  @include mobile
+    right: -12px
+

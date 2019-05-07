@@ -1,0 +1,530 @@
+html {
+  height: 100%; }
+
+body {
+  font-family: "DroidSans";
+  font-size: 16px;
+  color: #493b30;
+  height: 100%; }
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%; }
+
+.section_news {
+  flex: 1 0 auto; }
+
+.footer {
+  flex: 0 0 auto; }
+
+.title {
+  position: relative;
+  padding-bottom: 50px;
+  font-family: "DroidSansBold";
+  font-size: 36px;
+  color: #493b30;
+  text-align: center; }
+  @media (max-width: 991px) {
+    .title {
+      font-size: 24px; } }
+  .title:after {
+    content: "";
+    position: absolute;
+    width: 149px;
+    height: 7px;
+    background-color: #779453;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 20px; }
+  .title_noline {
+    padding-bottom: 0; }
+    .title_noline:after {
+      display: none; }
+  .title_form {
+    font-size: 30px; }
+    @media (max-width: 991px) {
+      .title_form {
+        font-size: 24px; } }
+
+.subtitle {
+  font-size: 20px; }
+  @media (max-width: 991px) {
+    .subtitle {
+      font-size: 16px; } }
+
+::-webkit-input-placeholder {
+  font-style: italic; }
+
+::-moz-placeholder {
+  font-style: italic; }
+
+:-moz-placeholder {
+  font-style: italic; }
+
+:-ms-input-placeholder {
+  font-style: italic; }
+
+input:focus::-webkit-input-placeholder {
+  color: transparent; }
+
+input:focus::-moz-placeholder {
+  color: transparent; }
+
+input:focus:-moz-placeholder {
+  color: transparent; }
+
+input:focus:-ms-input-placeholder {
+  color: transparent; }
+
+.header {
+  position: absolute;
+  width: 100%;
+  padding: 10px 0;
+  background: linear-gradient(to right, #f3f4f5, rgba(255, 255, 255, 0.4)); }
+  .header__logo {
+    width: 114px;
+    height: 70px;
+    background: url("../images/logo.png") no-repeat 50% 50%;
+    background-size: contain; }
+
+@media (max-width: 991px) {
+  .menu {
+    display: none; } }
+.menu__list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  text-align: right; }
+  .menu__list_reg {
+    margin-bottom: 17px; }
+  @media (max-width: 991px) {
+    .menu__list {
+      text-align: left; } }
+.menu__item {
+  position: relative;
+  display: inline-block;
+  margin: 0 19px; }
+  @media (max-width: 991px) {
+    .menu__item {
+      display: block;
+      margin: 0;
+      padding: 5px 20px; } }
+  .menu__item:after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 5px;
+    background: url("../images/menu-point.png") no-repeat 50% 50%;
+    background-size: contain;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -20px;
+    display: none; }
+  .menu__item:first-child {
+    margin-left: 0; }
+  .menu__item_last {
+    margin-right: 50px; }
+    .menu__item_last:after {
+      display: none; }
+    @media (max-width: 991px) {
+      .menu__item_last {
+        margin: 0; } }
+  .menu__item_button {
+    margin: 0 10px; }
+    @media (max-width: 991px) {
+      .menu__item_button {
+        margin: 0; } }
+    .menu__item_button:after {
+      display: none; }
+  @media (max-width: 991px) {
+    .menu__item:hover {
+      background: #779453; } }
+  .menu__item:hover .menu__link {
+    color: #779453;
+    text-decoration: none;
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    -ms-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out; }
+    @media (max-width: 991px) {
+      .menu__item:hover .menu__link {
+        color: #493b30; } }
+.menu__link {
+  display: block;
+  color: #493b30;
+  font-size: 18px;
+  font-family: "DroidSansBold"; }
+
+#nav-icon3 {
+  display: none;
+  float: right;
+  width: 35px;
+  height: 23px;
+  position: relative;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  cursor: pointer; }
+  @media (max-width: 991px) {
+    #nav-icon3 {
+      display: block; } }
+
+#nav-icon3 span {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: #493b30;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+  z-index: 3; }
+
+#nav-icon3 span:nth-child(1) {
+  top: 0px; }
+
+#nav-icon3 span:nth-child(2), #nav-icon3 span:nth-child(3) {
+  top: 8px; }
+
+#nav-icon3 span:nth-child(4) {
+  top: 16px; }
+
+.menu-mobile {
+  display: none;
+  width: 250px;
+  position: absolute;
+  top: 30px;
+  right: 15px;
+  background-color: #dfead1;
+  z-index: 2; }
+
+#nav-icon3.open span:nth-child(1) {
+  top: 24px;
+  width: 0%;
+  left: 50%; }
+
+#nav-icon3.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg); }
+
+#nav-icon3.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg); }
+
+#nav-icon3.open span:nth-child(4) {
+  top: 24px;
+  width: 0%;
+  left: 50%; }
+
+.menu-mobile {
+  display: none;
+  width: 250px;
+  position: absolute;
+  top: 30px;
+  right: 15px;
+  background-color: #dfead1;
+  z-index: 2; }
+  .menu-mobile.open {
+    display: block; }
+
+.section {
+  padding: 60px 0; }
+  .section_intro {
+    padding-top: 130px;
+    background: url("../images/screen-1.jpg") no-repeat 50% 50%;
+    background-size: cover; }
+  .section_product {
+    background: url("../images/screen-2.jpg") no-repeat 50% 50%;
+    background-size: cover; }
+  .section_advantage {
+    background: url("../images/screen-3.jpg") no-repeat 50% 50%;
+    background-size: cover; }
+  .section_guarantee {
+    background: url("../images/screen-4.jpg") no-repeat 50% 50%;
+    background-size: cover; }
+  .section_registration {
+    padding-top: 140px;
+    background: url("../images/screen-reg.png") no-repeat 50% 50%;
+    background-size: cover; }
+  .section_news {
+    padding-top: 130px;
+    background: url("../images/screen-news.png") no-repeat 50% 0%;
+    background-size: contain; }
+
+.text-block {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 45px;
+  color: #493b30; }
+  .text-block__content {
+    font-size: 19px; }
+    @media (max-width: 991px) {
+      .text-block__content {
+        font-size: 16px; } }
+  .text-block__list {
+    list-style: none;
+    padding: 0; }
+  .text-block__item {
+    position: relative;
+    margin-bottom: 42px;
+    padding-left: 70px;
+    line-height: 1.1; }
+    .text-block__item:before {
+      content: "";
+      position: absolute;
+      background: url("../images/arrow-li.png") no-repeat 50% 50%;
+      background-size: contain;
+      width: 60px;
+      height: 62px;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%); }
+
+.product-slider__item {
+  width: 312px;
+  margin: 20px 30px;
+  -webkit-box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.5); }
+
+.slide-arrow {
+  background-color: transparent;
+  width: 38px;
+  height: 76px;
+  border: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer; }
+  .slide-arrow:focus {
+    outline: none; }
+
+.next-arrow {
+  background: url("../images/arrow-left.png") no-repeat 50% 50%;
+  background-size: contain;
+  left: -30px; }
+  @media (max-width: 767px) {
+    .next-arrow {
+      left: -12px; } }
+
+.prev-arrow {
+  background: url("../images/arrow-right.png") no-repeat 50% 50%;
+  background-size: contain;
+  right: -30px; }
+  @media (max-width: 767px) {
+    .prev-arrow {
+      right: -12px; } }
+
+.button {
+  cursor: pointer;
+  -webkit-transition: all 300ms ease-in-out;
+  -moz-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  -ms-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out; }
+  .button_order {
+    background-color: #779453;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 20px auto 0;
+    padding: 10px 30px;
+    text-align: center;
+    font-family: "DroidSansBold";
+    font-size: 24px; }
+    @media (max-width: 991px) {
+      .button_order {
+        font-size: 18px; } }
+    .button_order_nm {
+      margin: 0; }
+    .button_order_modal {
+      margin: 0;
+      font-size: 18px; }
+    .button_order:hover {
+      background-color: #92af6f; }
+  .button__header {
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    color: #000;
+    font-size: 18px;
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    -ms-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out; }
+    @media (max-width: 991px) {
+      .button__header {
+        display: block;
+        background-color: transparent;
+        padding: 0; } }
+    .button__header:hover {
+      background-color: white;
+      color: #000;
+      text-decoration: none; }
+      @media (max-width: 991px) {
+        .button__header:hover {
+          background-color: transparent; } }
+
+.close:focus {
+  outline: none; }
+
+.client {
+  margin: 15px 0; }
+  @media (max-width: 767px) {
+    .client__item {
+      text-align: center;
+      margin-bottom: 10px; } }
+
+@media (max-width: 767px) {
+  .social {
+    margin-top: 20px; } }
+.social__item {
+  display: inline-block;
+  width: 43px;
+  height: 43px;
+  margin: 0 10px; }
+  @media (max-width: 991px) {
+    .social__item {
+      width: 37px;
+      height: 37px;
+      margin: 0 5px; } }
+  .social__item_instagram {
+    background: url("../images/Instagram_logo.png") no-repeat 50% 50%;
+    background-size: contain; }
+  .social__item_twitter {
+    background: url("../images/logo-twitter.png") no-repeat 50% 50%;
+    background-size: contain; }
+  .social__item_fb {
+    background: url("../images/feysbuk_logo.png") no-repeat 50% 50%;
+    background-size: contain; }
+
+.footer {
+  background: url("../images/screen-footer.jpg") no-repeat 50% 50%;
+  background-size: cover;
+  padding: 25px 0; }
+  @media (max-width: 767px) {
+    .footer {
+      text-align: center; } }
+  .footer__list {
+    padding: 0;
+    list-style: none; }
+  .footer__mail {
+    color: #493b30;
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    -ms-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out; }
+    .footer__mail:hover {
+      color: #493b30; }
+
+.modal-dialog {
+  max-width: 550px;
+  font-size: 20px; }
+
+.modal-footer,
+.modal-header {
+  border: none; }
+
+.modal-footer {
+  justify-content: center; }
+
+.modal_grey .modal-content {
+  background-color: rgba(229, 229, 229, 0.9); }
+
+.form-block {
+  padding: 25px 80px;
+  padding: 20px; }
+
+.input {
+  height: 47px;
+  outline: none;
+  border: none; }
+
+.form {
+  padding-top: 20px; }
+  .form__item {
+    position: relative;
+    margin: 35px 0; }
+  .form__btn {
+    display: block;
+    width: 100%;
+    height: 47px;
+    color: #fff; }
+    .form__btn:focus {
+      outline: none; }
+    .form__btn_company {
+      background-color: #c0986c;
+      margin-bottom: 40px; }
+    .form__btn_registration {
+      background-color: #779453; }
+      .form__btn_registration:hover {
+        background-color: #92af6f; }
+
+.invalid-feedback,
+.alert-danger-custom {
+  position: absolute;
+  top: -25px;
+  font-style: italic; }
+
+.news {
+  display: flex;
+  justify-content: space-between;
+  background-color: #b1bfc0;
+  margin-bottom: 15px;
+  padding: 15px 0;
+  color: #493b30;
+  -webkit-transition: all 300ms ease-in-out;
+  -moz-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  -ms-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out; }
+  .news:hover {
+    text-decoration: none;
+    color: inherit;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); }
+  .news__image img {
+    width: 100%; }
+  .news__content {
+    position: relative; }
+  .news__title-block {
+    display: flex;
+    justify-content: space-between; }
+  .news__title {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 50px;
+    font-family: "DroidSansBold";
+    font-size: 24px; }
+    .news__title:after {
+      content: "";
+      position: absolute;
+      width: 149px;
+      height: 7px;
+      background-color: #779453;
+      bottom: 35px;
+      right: 2%;
+      border-radius: 20px; }
+
+/*# sourceMappingURL=main.css.map */
