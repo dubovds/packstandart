@@ -1,3 +1,32 @@
 .price
-  height: 100px
-  
+
+  @include tablet
+    overflow-y: scroll
+
+  table
+    width: 100% 
+    text-align: center
+    border-collapse: inherit
+
+  th
+    background-color: #c0986c
+    color: #ffffff
+    font-family: $bold
+    padding: 10px
+
+  td
+    background-color: #f2e9e0
+    padding: 10px
+
+  &__title-block
+    display: flex 
+    justify-content: space-between
+
+  &__title-item
+    background-color: #c0986c
+    margin: 5px
+    padding: 15px
+    color: #ffffff
+    font-weight: bold
+    text-align: center
+     

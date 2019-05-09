@@ -36,22 +36,6 @@
         </slide>
       </carousel>
 
-      <!--<div>-->
-
-        <!--<div class="product-slider__item">-->
-          <!--<img class="product-slider__image" src="../assets/images/pic-1.jpg" alt="">-->
-        <!--</div>-->
-        <!--<div class="product-slider__item">-->
-          <!--<img class="product-slider__image" src="../assets/images/pic-2.jpg" alt="">-->
-        <!--</div>-->
-        <!--<div class="product-slider__item">-->
-          <!--<img class="product-slider__image" src="../assets/images/pic-3.jpg" alt="">-->
-        <!--</div>-->
-        <!--<div class="product-slider__item">-->
-          <!--<img class="product-slider__image" src="../assets/images/pic-2.jpg" alt="">-->
-        <!--</div>-->
-
-      <!--</div>-->
       <div class="row justify-content-md-center">
         <div class="col-xl-8">
           <div class="text-block">

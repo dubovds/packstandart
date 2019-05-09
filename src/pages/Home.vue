@@ -68,7 +68,9 @@
       </div>
     </section>
 
-    <section class="section section_clients">
+    <SliderClient></SliderClient>
+
+    <!-- <section class="section section_clients">
       <div class="container">
         <div class="row">
           <div class="col">
@@ -100,7 +102,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="section section_guarantee">
       <div class="container">
@@ -156,12 +158,14 @@
 
 
 <script>
-  import Slider from './Slider.vue'
+  import Slider from '@/components/Slider.vue'
+  import SliderClient from '@/components/Client-slider.vue'
 
   export default {
     name: 'Home',
     components: {
-      Slider
+      Slider,
+      SliderClient
     }
 
   }

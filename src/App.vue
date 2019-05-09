@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <Navigation></Navigation>
-
-    <router-view></router-view>
-
+    <div class="content-wrapper">
+      <router-view></router-view>
+    </div>
     <Footer></Footer>
   </div>
 </template>
@@ -23,5 +23,9 @@ export default {
 </script>
 
 <style>
-
+  #app{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 </style>

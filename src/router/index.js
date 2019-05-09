@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Home from '@/components/Home'
-import Price from '@/components/Price'
-import News from '@/components/News'
-import Contacts from '@/components/Contacts'
+import Home from '@/pages/Home'
+import Price from '@/pages/Price'
+import News from '@/pages/News'
+import Contacts from '@/pages/Contacts'
 import Registration from '@/components/Registration'
 
 Vue.use(Router);
