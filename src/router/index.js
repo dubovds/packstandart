@@ -5,8 +5,8 @@ import Home from '@/pages/Home'
 import Price from '@/pages/Price'
 import News from '@/pages/News'
 import Contacts from '@/pages/Contacts'
-import Registration from '@/components/Registration'
-import Login from '@/components/Login'
+import Registration from '@/pages/auth/Registration'
+import Login from '@/pages/auth/Login'
 
 Vue.use(Router);
 

@@ -30,6 +30,7 @@
         </div>
       </div>
     </div>
+    {{ info }}
   </section>
 </template>
 
@@ -41,21 +42,22 @@
         error: false,
         email: '',
         password: '',
-        status: ''
-      }
+        info: null,
+        errors: {}
+      }      
     },
     methods:{
       registerUser(){
         const user = {
-           fio: this.username, 
-           email: this.mail,
-           phone: this.phone,
+           email: this.email,
            password: this.password
         }
-        this.$http.post('http://test1.iti.dp.ua/api/auth/register/', user)
+        this.$http.post('http://test1.iti.dp.ua/api/auth/login/', user)
+        .then(response => (this.info = response));
 
       }
     },
+
     created: function () {
       //this.getAllPosts()
     }

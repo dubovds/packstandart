@@ -1,6 +1,7 @@
 <template>
   <section class="section section_registration">
     <div class="container">
+
       <div class="row justify-content-center">
         <div class="col-xl-6 col-md-8 col-12">
           <div class="form-block">
@@ -75,7 +76,7 @@
         phone: '',
         password: '',
         repeatPassword: '',
-        
+        errors: {},
         posts: []
       }
     },
@@ -88,7 +89,14 @@
            password: this.password
         }
         this.$http.post('http://test1.iti.dp.ua/api/auth/register/', user)
-
+        .then(response =>{
+          if(response.data.success){
+            this.$router.push('/');
+          }
+        })
+        .catch(error =>{
+          this.errors = error.response.data.errors;
+        });
       }
     },
     created: function () {

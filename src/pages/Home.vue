@@ -70,40 +70,6 @@
 
     <SliderClient></SliderClient>
 
-    <!-- <section class="section section_clients">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="title">
-              К тому же мы сотрудничаем с:
-            </div>
-          </div>
-        </div>
-        <div class="row client">
-          <div class="col-md-3">
-            <div class="client__item">
-              <img slass="client__logo" src="../assets/images/partner-logo.png" alt="">
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="client__item">
-              <img slass="client__logo" src="../assets/images/partner-logo.png" alt="">
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="client__item">
-              <img slass="client__logo" src="../assets/images/partner-logo.png" alt="">
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="client__item">
-              <img class="client__logo" src="../assets/images/partner-logo.png" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
     <section class="section section_guarantee">
       <div class="container">
         <div class="row">
@@ -145,13 +111,18 @@
             </div>
           </div>
           <div class="col-md-3">
-            <div class="button button_order button_order_nm" data-toggle="modal" data-target="#orderModal">
+            <div class="button button_order button_order_nm" data-toggle="modal" data-target="#orderModal"
+                  @click="modalShow = !modalShow"
+                  
+            >
               заказать
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <Modal :modalShow="modalShow"></Modal>
   </div>
 
 </template>
@@ -160,18 +131,25 @@
 <script>
   import Slider from '@/components/Slider.vue'
   import SliderClient from '@/components/Client-slider.vue'
+  import Modal from '@/components/modal.vue'
 
   export default {
     name: 'Home',
     components: {
       Slider,
-      SliderClient
+      SliderClient,
+      Modal
+    },
+    data() {
+      return {
+        modalShow: false
+      }
     }
 
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+
+<style
 
 </style>
