@@ -6,6 +6,7 @@ import Price from '@/pages/Price'
 import News from '@/pages/News'
 import Contacts from '@/pages/Contacts'
 import Registration from '@/components/Registration'
+import Login from '@/components/Login'
 
 Vue.use(Router);
 
@@ -36,6 +37,11 @@ export default new Router({
       path: '/reg',
       name: 'reg',
       component: Registration
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
     }
   ]
 })

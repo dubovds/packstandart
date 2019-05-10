@@ -61,14 +61,6 @@
         </div>
       </div>
     </div>
-
-    <div class="post" 
-      v-for="post in posts"
-      v-bind:key="post.id">
-      <span>{{ post.id }}</span>
-      <h3>{{ post.title }}</h3>
-      <p>{{ post.body }}</p>
-    </div>
   </section>
 </template>
 
@@ -95,17 +87,9 @@
            phone: this.phone,
            password: this.password
         }
-        this.$http.post('https://jsonplaceholder.typicode.com/posts', user)
+        this.$http.post('http://test1.iti.dp.ua/api/auth/register/', user)
 
-      },
-      // getAllPosts() {
-      //   this.$http.get('https://jsonplaceholder.typicode.com/posts')
-      //   .then(function(response){
-      //     this.posts = response.data    
-      //   }, function(error){
-
-      //   })
-      // }
+      }
     },
     created: function () {
       //this.getAllPosts()

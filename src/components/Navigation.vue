@@ -60,6 +60,7 @@
               <li class="menu__item menu__item_button"
                   v-for="link in linkButtonMenu"
                   :key="link.title"
+                  v-if="link.auth === auth"
               >
                 <router-link class="button__header button__header_entry"
                              :to="`${link.url}`"
@@ -89,9 +90,16 @@
           {title: 'Контакты', url: '/contacts'},
         ],
         linkButtonMenu: [
-          {title: 'Вход', url: '/enter'},
-          {title: 'Регистрация', url: '/reg'},
+          {title: 'Вход', url: '/login', auth: false},
+          {title: 'Регистрация', url: '/reg', auth: false},
+          {title: 'username', url: '/reg', auth: true},
+          {title: 'Выход', url: '/reg', auth: true},
         ]
+      }
+    },
+    computed: {
+      auth(){
+        return false;
       }
     }
 
