@@ -99,7 +99,7 @@
     },
     computed: {
       auth(){
-        return false;
+        return false ;
       }
     }
 

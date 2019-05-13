@@ -82,21 +82,30 @@
     },
     methods:{
       registerUser(){
+        const axios = require('axios')
         const user = {
-           fio: this.username, 
-           email: this.mail,
+           fio: this.username,
            phone: this.phone,
+           email: this.mail,
            password: this.password
         }
-        this.$http.post('http://test1.iti.dp.ua/api/auth/register/', user)
-        .then(response =>{
-          if(response.data.success){
+        axios.post('http://test1.iti.dp.ua/api/auth/register/', user)
+        .then((response) => {
+          console.log(response);
+          console.log(response.data.status)
+          if(response.data.status === "Success"){
             this.$router.push('/');
           }
         })
-        .catch(error =>{
-          this.errors = error.response.data.errors;
-        });
+        // this.$http.post('http://test1.iti.dp.ua/api/auth/register/', user)
+        // .then(response =>{
+        //   if(response.data.success){
+        //     this.$router.push('/');
+        //   }
+        // })
+        // .catch(error =>{
+        //   this.errors = error.response.data.errors;
+        // });
       }
     },
     created: function () {

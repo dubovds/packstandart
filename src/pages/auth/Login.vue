@@ -7,7 +7,7 @@
             <div class="title title_form">
               Вход
             </div>
-            <form class="form needs-validation" action="" novalidate @submit.prevent='registerUser'>
+            <form class="form needs-validation" action="" novalidate @submit.prevent='loginUser'>
               <div class="form__item">
                 <input class="input form-control" required type="email" placeholder="e-mail"
                         v-model="email"
@@ -30,7 +30,6 @@
         </div>
       </div>
     </div>
-    {{ info }}
   </section>
 </template>
 
@@ -41,20 +40,37 @@
       return {
         error: false,
         email: '',
-        password: '',
-        info: null,
-        errors: {}
+        password: ''
       }      
     },
     methods:{
-      registerUser(){
+      loginUser(){
+        const axios = require('axios')
         const user = {
            email: this.email,
            password: this.password
         }
-        this.$http.post('http://test1.iti.dp.ua/api/auth/login/', user)
-        .then(response => (this.info = response));
 
+        axios.post('http://test1.iti.dp.ua/api/auth/login/', user)
+          .then(request => this.loginSuccessful(request))
+          .catch(() => this.loginFailed())
+
+        // this.$http.post('http://test1.iti.dp.ua/api/auth/login/', user )
+        // .then(response => (this.info = response));
+
+      },
+      loginSuccessful (req) {
+        if (!req.data.token) {
+          this.loginFailed()
+          return
+        }
+        this.error = false
+        localStorage.token = req.data.token
+        this.$router.replace(this.$route.query.redirect || '/authors')
+      },
+      loginFailed () {
+        this.error = 'Login failed!'
+        delete localStorage.token
       }
     },
 

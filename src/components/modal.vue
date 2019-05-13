@@ -1,37 +1,36 @@
 <template>
-  <div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-      :class="{ show: modalShow }"
-  >
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+  <b-modal id="orderModal" centered>
+                
           <div class="modal-body">
             Для того, чтобы сделать заказ Вам нужно
             войти или зарегистрироваться
           </div>
-          <div class="modal-footer">
-            <div class="button button_order button_order_modal">
-              Войти
-            </div>
-            <div class="button button_order button_order_modal" data-toggle="modal" data-target="#registrationModal">
-              Зарегистрироваться
-            </div>
-          </div>
-        </div>
+    <template slot="modal-footer">
+      <div class="button button_order button_order_modal">
+        <a href="/login">
+          Войти
+        </a>
       </div>
-    </div>
+      <div class="button button_order button_order_modal" data-toggle="modal" data-target="#registrationModal">
+        <a href="/reg">
+          Зарегистрироваться
+        </a>
+      </div>
+    </template>
+
+    </b-modal>
 </template>
 
 <script>
   export default {
-    name: 'Modal',
-    
-
-    props: ['modalShow']
-
+    name: 'Modal'
   }
 </script>
+
+<style scoped>
+.button a{
+  color: #fff;
+  text-decoration: none;
+}
+</style>
+

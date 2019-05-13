@@ -26,7 +26,7 @@
                 </p>
 
               </div>
-              <div class="button button_order" data-toggle="modal" data-target="#orderModal">
+              <div class="button button_order" v-b-modal.orderModal>
                 заказать
               </div>
             </div>
@@ -111,9 +111,8 @@
             </div>
           </div>
           <div class="col-md-3">
-            <div class="button button_order button_order_nm" data-toggle="modal" data-target="#orderModal"
-                  @click="modalShow = !modalShow"
-                  
+            <div class="button button_order button_order_nm"
+                 v-b-modal.orderModal                  
             >
               заказать
             </div>
@@ -122,7 +121,7 @@
       </div>
     </section>
 
-    <Modal :modalShow="modalShow"></Modal>
+    <Modal></Modal>
   </div>
 
 </template>
@@ -142,7 +141,7 @@
     },
     data() {
       return {
-        modalShow: false
+        
       }
     }
 
@@ -150,6 +149,6 @@
 </script>
 
 
-<style
+<style>
 
 </style>
