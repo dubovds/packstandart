@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Navigation></Navigation>
+    <Navigation :auth='auth'></Navigation>
     <div class="content-wrapper">
-      <router-view></router-view>
+      <router-view :auth.sync='auth'></router-view>
     </div>
     <Footer></Footer>
   </div>
@@ -18,6 +18,16 @@ export default {
   components: {
     Navigation,
     Footer
+  },
+  data(){
+    return{
+        auth: false
+    }
+  },
+  computed: {
+    // auth(){
+    //   return false ;
+    // }
   }
 }
 </script>

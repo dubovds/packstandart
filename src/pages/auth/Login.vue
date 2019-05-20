@@ -7,40 +7,49 @@
             <div class="title title_form">
               Вход
             </div>
-            <form class="form needs-validation" action="" novalidate @submit.prevent='loginUser'>
-              <div class="form__item">
-                <input class="input form-control" required type="email" placeholder="e-mail"
+            <form class="form needs-validation" action="#" novalidate @submit.prevent='loginUser'>
+              <div class="form__item" >
+                <input class="input form-control" type="email" placeholder="e-mail"
                         v-model="email"
                 >
-                <div class="invalid-feedback">
-                  Please choose a username.
-                </div>
+                
               </div>
               <div class="form__item">
-                <input class="input form-control" required type="password" placeholder="Пароль"
+                <input class="input form-control" type="password" placeholder="Пароль"
                         v-model="password"
                 >
-                <div class="invalid-feedback">
-                  Please choose a username.
-                </div>
               </div>
-              <button type="submit" class="form__btn form__btn_registration">Войти</button>
+              <div class="buttons-list">
+                    <button type="submit" class="form__btn form__btn_registration"      
+                    >
+                      Войти
+                    </button>
+                </div>
+              
             </form>
           </div>
         </div>
+      </div>
+      <div class="class" v-for="info in infos"
+                          v-bind:key = "info.id">
+        <span>{{ info.person_companies_count }}</span><br>
+        <span>{{ info.person_uuid }}</span>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+ 
   export default{
     name: 'Login',
+    props: [ 'auth'],
     data(){
       return {
         error: false,
         email: '',
-        password: ''
+        password: '',
+        infos: []
       }      
     },
     methods:{
@@ -55,9 +64,6 @@
           .then(request => this.loginSuccessful(request))
           .catch(() => this.loginFailed())
 
-        // this.$http.post('http://test1.iti.dp.ua/api/auth/login/', user )
-        // .then(response => (this.info = response));
-
       },
       loginSuccessful (req) {
         if (!req.data.token) {
@@ -66,8 +72,10 @@
         }
         this.error = false
         localStorage.token = req.data.token
-        this.$router.replace(this.$route.query.redirect || '/authors')
-      },
+        //this.$router.replace('/')
+        this.$emit('update:auth', true)
+        this.infos = req.data
+      }, 
       loginFailed () {
         this.error = 'Login failed!'
         delete localStorage.token

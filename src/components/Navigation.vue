@@ -80,6 +80,7 @@
 <script>
   export default {
     name: 'Navigation',
+    props: ['auth'],
     data(){
       return {
         menuShow: false,
@@ -93,20 +94,14 @@
           {title: 'Вход', url: '/login', auth: false},
           {title: 'Регистрация', url: '/reg', auth: false},
           {title: 'username', url: '/reg', auth: true},
-          {title: 'Выход', url: '/reg', auth: true},
+          {title: 'Выход', url: '/', auth: true},
         ]
-      }
-    },
-    computed: {
-      auth(){
-        return false ;
       }
     }
 
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 </style>

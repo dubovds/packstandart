@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import Vuelidate from 'vuelidate'
 import BootstrapVue from 'bootstrap-vue'
 import router from './router'
 // import VueResource from 'vue-resource'
@@ -14,7 +15,7 @@ import './assets/js/custom'
 
 Vue.config.productionTip = false;
 
-
+Vue.use(Vuelidate)
 Vue.use(BootstrapVue)
 // Vue.use(VueResource)
 
