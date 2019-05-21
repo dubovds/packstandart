@@ -150,11 +150,11 @@ input:focus:-ms-input-placeholder {
   padding: 0;
   margin: 0;
   list-style-type: none;
-  text-align: right;
+  text-align: center;
 }
 
-.menu__list_reg {
-  margin-bottom: 17px;
+.menu__list_auth {
+  text-align: right;
 }
 
 @media (max-width: 991px) {
@@ -546,11 +546,11 @@ input:focus:-ms-input-placeholder {
 }
 
 .button__header {
-  padding: 10px 20px;
+  padding: 7px 20px;
   background-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   color: #000;
-  font-size: 18px;
+  font-size: 16px;
   -webkit-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
 }
@@ -678,6 +678,10 @@ input:focus:-ms-input-placeholder {
 }
 
 .form-block {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.form-block {
   padding: 25px 80px;
   padding: 20px;
 }
@@ -719,6 +723,10 @@ input:focus:-ms-input-placeholder {
 
 .form__btn_registration:hover {
   background-color: #92af6f;
+}
+
+.form .error {
+  position: absolute;
 }
 
 .invalid-feedback,

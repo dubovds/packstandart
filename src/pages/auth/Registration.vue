@@ -85,9 +85,9 @@
                   <p class="typo__p" v-if="submitStatus === 'PENDING'">Отправка...</p>
                 </div>
                 <div class="buttons-list_info">
-                  <span>do you have account?
+                  <span>У вас уже есть аккаунт?
                     <router-link :to="`/login`">
-                        enter here
+                        перейдите сюда
                     </router-link>
                   </span>
                 </div>
@@ -207,7 +207,8 @@ export default {
   
 .input
   &.error-border
-    
     border: 1px solid red
 
+.buttons-list_info
+  margin-top: 15px
 </style>

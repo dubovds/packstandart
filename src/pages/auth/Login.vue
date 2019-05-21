@@ -66,6 +66,7 @@
 
       },
       loginSuccessful (req) {
+        console.log('login success', req);
         if (!req.data.token) {
           this.loginFailed()
           return
