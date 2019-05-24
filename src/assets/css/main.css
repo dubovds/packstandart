@@ -125,6 +125,11 @@ input:focus:-ms-input-placeholder {
   color: transparent;
 }
 
+.no-gutter > [class*='col-'] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
 .header {
   position: absolute;
   width: 100%;
@@ -250,6 +255,19 @@ input:focus:-ms-input-placeholder {
   font-family: "DroidSansBold";
 }
 
+.menu__link.router-link-exact-active {
+  color: #779453;
+  text-decoration: none;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
+@media (max-width: 991px) {
+  .menu__link.router-link-exact-active {
+    color: #493b30;
+  }
+}
+
 #nav-icon3 {
   display: none;
   float: right;
@@ -368,7 +386,7 @@ input:focus:-ms-input-placeholder {
 }
 
 .section_registration {
-  padding-top: 140px;
+  padding-top: 130px;
   background: url("../images/screen-reg.png") no-repeat 50% 50%;
   background-size: cover;
 }
@@ -390,6 +408,13 @@ input:focus:-ms-input-placeholder {
   padding-bottom: 0;
   background: url("../images/screen-contacts.png") no-repeat 50% 0%;
   background-size: contain;
+}
+
+.section_profile {
+  padding-top: 90px;
+  padding-bottom: 0;
+  background: url("../images/screen-profile.png") no-repeat 50% 0%;
+  background-size: cover;
 }
 
 .text-block {
@@ -940,5 +965,30 @@ input:focus:-ms-input-placeholder {
   .contacts__map iframe {
     height: 300px;
   }
+}
+
+.nav-profile {
+  background-color: rgba(163, 150, 129, 0.7);
+  padding: 30px 0;
+}
+
+.nav-profile ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.nav-profile li:hover {
+  background-color: #dfd9ce;
+}
+
+.nav-profile a {
+  display: block;
+  color: #2b261f;
+  padding: 18px 10px 18px 70px;
+  font-size: 18px;
+}
+
+.nav-profile a:hover {
+  text-decoration: none;
 }
 /*# sourceMappingURL=main.css.map */

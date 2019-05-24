@@ -40,16 +40,17 @@
 </template>
 
 <script>
- 
+
   export default{
     name: 'Login',
-    props: [ 'auth'],
+    // props: [ 'auth'],
     data(){
       return {
         error: false,
         email: '',
         password: '',
-        infos: []
+        infos: [],
+        errors: {}
       }      
     },
     methods:{
@@ -62,7 +63,11 @@
 
         axios.post('http://test1.iti.dp.ua/api/auth/login/', user)
           .then(request => this.loginSuccessful(request))
-          .catch(() => this.loginFailed())
+         
+          .catch(error => {
+                    this.errors = error.response.data.errors;
+                    delete localStorage.token
+                });
 
       },
       loginSuccessful (req) {
@@ -73,18 +78,14 @@
         }
         this.error = false
         localStorage.token = req.data.token
-        //this.$router.replace('/')
-        this.$emit('update:auth', true)
-        this.infos = req.data
-      }, 
-      loginFailed () {
-        this.error = 'Login failed!'
-        delete localStorage.token
+        localStorage.setItem("person_uuid", req.data.person_uuid);
+        localStorage.setItem("person_companies_count", req.data.person_companies_count);
+        if(req.data.person_companies_count === 0){
+          this.$router.replace('/')
+        }
+        // this.$router.replace('/')
+        // this.$emit('update:auth', true)
       }
-    },
-
-    created: function () {
-      //this.getAllPosts()
     }
   }
 </script>

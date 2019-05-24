@@ -17,7 +17,7 @@
             <ul class="menu__list menu__list_auth clearfix">
               <li
                 class="menu__item menu__item_button"
-                v-for="link in linkButtonMenu"
+                v-for="link in navAuth"
                 :key="link.title"
                 v-if="link.auth === auth"
                 @click="menuShow = false"
@@ -31,7 +31,7 @@
             <ul class="menu__list clearfix">
               <li
                 class="menu__item"
-                v-for="link in linkMenu"
+                v-for="link in nav"
                 :key="link.title"
                 @click="menuShow = false"
               >
@@ -44,7 +44,7 @@
             <ul class="menu__list menu__list_auth clearfix">
               <li
                 class="menu__item menu__item_button"
-                v-for="link in linkButtonMenu"
+                v-for="link in navAuth"
                 :key="link.title"
                 v-if="link.auth === auth"
               >
@@ -56,7 +56,7 @@
             </ul>
 
             <ul class="menu__list clearfix">
-              <li class="menu__item" v-for="link in linkMenu" :key="link.title">
+              <li class="menu__item" v-for="link in nav" :key="link.title">
                 <router-link class="menu__link" :to="`${link.url}`">{{ link.title }}</router-link>
               </li>
             </ul>
@@ -70,23 +70,22 @@
 <script>
 export default {
   name: "Navigation",
-  props: ["auth"],
+  //props: ["auth"],
   data() {
     return {
-      menuShow: false,
-      linkMenu: [
-        { title: "Главная", url: "/" },
-        { title: "Новости", url: "/news" },
-        { title: "Прайс", url: "/price" },
-        { title: "Контакты", url: "/contacts" }
-      ],
-      linkButtonMenu: [
-        { title: "Вход", url: "/login", auth: false },
-        { title: "Регистрация", url: "/reg", auth: false },
-        { title: "username", url: "/reg", auth: true },
-        { title: "Выход", url: "/", auth: true }
-      ]
+      menuShow: false
     };
+  },
+  computed: {
+    auth() {
+      return false;
+    },
+    nav() {
+      return this.$store.getters.nav;
+    },
+    navAuth() {
+      return this.$store.getters.navAuth;
+    }
   }
 };
 </script>

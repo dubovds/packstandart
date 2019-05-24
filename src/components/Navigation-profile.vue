@@ -1,0 +1,64 @@
+<template>
+  <nav class="nav-profile">
+    <ul>
+      <li>
+        <a href="#">
+          Оформить заказ
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          История заказов
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          Справочник изделий
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          Архив изделий
+        </a>
+      </li>
+      <li>
+        <router-link
+                  class=""
+                  :to="'./profile/companies'"
+                >
+                Мот компании
+        </router-link>
+        
+      </li>
+      <li>
+        <a href="#">
+          Личные данные
+        </a>
+      </li>
+    </ul>
+  </nav>
+</template>
+
+<script>
+
+export default {
+  name: "Navigation-profile",
+
+  data() {
+    return {
+      menuShow: false
+    };
+  },
+  computed: {
+    nav(){
+      return this.$store.getters.nav
+    },
+    navAuth(){
+      return this.$store.getters.navAuth
+    }
+  }
+};
+</script>
+
+<style scoped>
+</style>

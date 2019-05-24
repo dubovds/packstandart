@@ -4,9 +4,11 @@ import Router from 'vue-router'
 import Home from '@/pages/Home'
 import Price from '@/pages/Price'
 import News from '@/pages/News'
+import Profile from '@/pages/Profile'
 import Contacts from '@/pages/Contacts'
 import Registration from '@/pages/auth/Registration'
 import Login from '@/pages/auth/Login'
+import myCompanies from '@/pages/profile/my-companies'
 
 Vue.use(Router);
 
@@ -42,6 +44,18 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: Profile,
+      children:[
+        {
+          path: 'companies',
+          name: 'companies',
+          component: myCompanies
+        }
+      ]
     }
   ]
 })

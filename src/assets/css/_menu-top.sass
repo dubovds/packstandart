@@ -70,11 +70,21 @@
         @include tablet
           color: $textColor
 
+    
+
   &__link
     display: block
     color: $textColor
     font-size: 18px
     font-family: $bold
+
+    &.router-link-exact-active
+      color: $green
+      text-decoration: none
+      @include transition
+
+      @include tablet
+        color: $textColor
 
 #nav-icon3
   display: none
