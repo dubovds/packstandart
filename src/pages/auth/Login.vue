@@ -78,10 +78,11 @@
         }
         this.error = false
         localStorage.token = req.data.token
-        localStorage.setItem("person_uuid", req.data.person_uuid);
-        localStorage.setItem("person_companies_count", req.data.person_companies_count);
+        localStorage.setItem('person_uuid', req.data.person_uuid);
+        localStorage.setItem('person_companies_count', req.data.person_companies_count);
+        this.$store.commit('set_auth', true)
         if(req.data.person_companies_count === 0){
-          this.$router.replace('/')
+          this.$router.replace('/profile/add-companies')
         }
         // this.$router.replace('/')
         // this.$emit('update:auth', true)

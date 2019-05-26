@@ -67,6 +67,10 @@ body {
   }
 }
 
+.title_profile {
+  font-size: 26px;
+}
+
 .subtitle {
   font-size: 20px;
 }
@@ -965,6 +969,22 @@ input:focus:-ms-input-placeholder {
   .contacts__map iframe {
     height: 300px;
   }
+}
+
+.profile__content-section {
+  position: relative;
+  height: 100%;
+}
+
+.profile__content {
+  position: absolute;
+  width: 80%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px;
 }
 
 .nav-profile {

@@ -6,7 +6,9 @@
           <NavigationProfile></NavigationProfile>
         </div>
         <div class="col-md-8">
-          <router-view></router-view>
+          <div class="profile__content-section">
+            <router-view></router-view>
+          </div>
         </div>
       </div>
     </div>

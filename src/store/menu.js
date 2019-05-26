@@ -1,11 +1,13 @@
 export default{
 
   state:{
+    auth: false,
     nav: [
-      { title: "Главная", url: "/" },
-      { title: "Новости", url: "/news" },
-      { title: "Прайс", url: "/price" },
-      { title: "Контакты", url: "/contacts" }
+      { title: "Главная", url: "/", auth: 'both' },
+      { title: "Новости", url: "/news", auth: 'both' },
+      { title: "Прайс", url: "/price", auth: 'both' },
+      { title: "Контакты", url: "/contacts", auth: 'both' },
+      { title: "Личный кабинет", url: "/profile", auth: true }
     ],
     navAuth: [
       { title: "Вход", url: "/login", auth: false },
@@ -14,9 +16,16 @@ export default{
       { title: "Выход", url: "/", auth: true }
     ]
   },
-  mutations:{},
+  mutations:{
+    set_auth : (state, payload) => {
+      state.auth = payload
+    }
+  },
   actions:{},
   getters:{
+    auth(state) {
+      return state.auth
+    },
     nav (state) {
       return state.nav
     },

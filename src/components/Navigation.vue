@@ -56,7 +56,10 @@
             </ul>
 
             <ul class="menu__list clearfix">
-              <li class="menu__item" v-for="link in nav" :key="link.title">
+              <li class="menu__item" 
+                  v-for="link in nav" 
+                  :key="link.title"
+                  v-if="link.auth === 'both' || link.auth === auth">
                 <router-link class="menu__link" :to="`${link.url}`">{{ link.title }}</router-link>
               </li>
             </ul>
@@ -78,8 +81,11 @@ export default {
   },
   computed: {
     auth() {
-      return false;
+      return this.$store.getters.auth;
     },
+    // auth() {
+    //   return false;
+    // },
     nav() {
       return this.$store.getters.nav;
     },

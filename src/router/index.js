@@ -8,7 +8,9 @@ import Profile from '@/pages/Profile'
 import Contacts from '@/pages/Contacts'
 import Registration from '@/pages/auth/Registration'
 import Login from '@/pages/auth/Login'
+// import profile from '@/pages/Profile'
 import myCompanies from '@/pages/profile/my-companies'
+import addCompanies from '@/pages/profile/add-companies'
 
 Vue.use(Router);
 
@@ -50,10 +52,16 @@ export default new Router({
       name: 'profile',
       component: Profile,
       children:[
+        
         {
           path: 'companies',
           name: 'companies',
           component: myCompanies
+        },
+        {
+          path: 'add-companies',
+          name: 'addCompanies',
+          component: addCompanies
         }
       ]
     }

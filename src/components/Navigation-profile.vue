@@ -24,9 +24,9 @@
       <li>
         <router-link
                   class=""
-                  :to="'./profile/companies'"
+                  :to="'/profile/companies'"
                 >
-                Мот компании
+                Мои компании
         </router-link>
         
       </li>
