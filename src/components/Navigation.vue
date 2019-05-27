@@ -51,7 +51,25 @@
                 <router-link
                   class="button__header button__header_entry"
                   :to="`${link.url}`"
+                  @click.prevent="exit"
                 >{{ link.title }}</router-link>
+              </li>
+            </ul>
+            <ul class="menu__list menu__list_auth clearfix">
+              <li
+                class="menu__item menu__item_button"
+                v-for="link in navAuthLogin"
+                :key="link.title"
+                v-if="link.auth === auth"
+                
+              >
+                <span class="button__header button__header_entry"
+                      @click="exit(link)">
+                  {{ link.title }}
+                </span>
+
+                
+                
               </li>
             </ul>
 
@@ -63,6 +81,7 @@
                 <router-link class="menu__link" :to="`${link.url}`">{{ link.title }}</router-link>
               </li>
             </ul>
+            
           </nav>
         </div>
       </div>
@@ -73,7 +92,6 @@
 <script>
 export default {
   name: "Navigation",
-  //props: ["auth"],
   data() {
     return {
       menuShow: false
@@ -83,14 +101,22 @@ export default {
     auth() {
       return this.$store.getters.auth;
     },
-    // auth() {
-    //   return false;
-    // },
     nav() {
       return this.$store.getters.nav;
     },
     navAuth() {
       return this.$store.getters.navAuth;
+    },
+    navAuthLogin() {
+      return this.$store.getters.navAuthLogin;
+    }
+  },
+  methods: {
+    exit(link){
+      if(link.title == 'Выход'){
+        this.$store.dispatch('logout');
+        this.$router.replace('/')
+      }
     }
   }
 };

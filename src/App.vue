@@ -34,6 +34,9 @@ export default {
     // auth(){
     //   return false ;
     // }
+  },
+  beforeCreate() {
+    this.$store.dispatch('checkToken');
   }
 }
 </script>

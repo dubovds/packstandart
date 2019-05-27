@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 export default{
 
   state:{
@@ -12,16 +14,59 @@ export default{
     navAuth: [
       { title: "Вход", url: "/login", auth: false },
       { title: "Регистрация", url: "/reg", auth: false },
-      { title: "username", url: "/reg", auth: true },
-      { title: "Выход", url: "/", auth: true }
+    ],
+    navAuthLogin: [
+      { title: "username", auth: true },
+      { title: "Выход", auth: true }
     ]
   },
+
   mutations:{
     set_auth : (state, payload) => {
       state.auth = payload
+    },
+  },
+
+  actions:{
+    checkToken: ({ commit }) => {
+      const token = localStorage.getItem('token');
+      if (token) commit('set_auth', true);
+    },
+    login({ commit }, { user, $router}) {
+      axios
+        .post('http://test1.iti.dp.ua/api/auth/login/', user)
+        .then((req) => {
+            console.log('login success', req);
+            if (!req.data.token) {
+              delete localStorage.token;
+              delete localStorage.person_uuid;
+              delete localStorage.person_companies_count;
+              return commit('set_auth', false);
+            }
+            
+            localStorage.setItem('token', req.data.token);
+            localStorage.setItem('person_uuid', req.data.person_uuid);
+            localStorage.setItem('person_companies_count', req.data.person_companies_count);
+            commit('set_auth', true);
+
+            if(req.data.person_companies_count === 0){
+              $router.replace('/profile/add-companies')
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+            delete localStorage.token;
+            delete localStorage.person_uuid;
+            delete localStorage.person_companies_count;
+            commit('set_auth', false);
+          });
+    },
+    logout({ commit} ) {
+      commit('set_auth', false);
+      localStorage.clear();
     }
   },
-  actions:{},
+
   getters:{
     auth(state) {
       return state.auth
@@ -31,6 +76,9 @@ export default{
     },
     navAuth (state) {
       return state.navAuth  
+    },
+    navAuthLogin (state) {
+      return state.navAuthLogin  
     }
   }
 

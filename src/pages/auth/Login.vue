@@ -43,49 +43,21 @@
 
   export default{
     name: 'Login',
-    // props: [ 'auth'],
     data(){
       return {
         error: false,
         email: '',
         password: '',
         infos: [],
-        errors: {}
       }      
     },
     methods:{
       loginUser(){
-        const axios = require('axios')
         const user = {
            email: this.email,
            password: this.password
         }
-
-        axios.post('http://test1.iti.dp.ua/api/auth/login/', user)
-          .then(request => this.loginSuccessful(request))
-         
-          .catch(error => {
-                    this.errors = error.response.data.errors;
-                    delete localStorage.token
-                });
-
-      },
-      loginSuccessful (req) {
-        console.log('login success', req);
-        if (!req.data.token) {
-          this.loginFailed()
-          return
-        }
-        this.error = false
-        localStorage.token = req.data.token
-        localStorage.setItem('person_uuid', req.data.person_uuid);
-        localStorage.setItem('person_companies_count', req.data.person_companies_count);
-        this.$store.commit('set_auth', true)
-        if(req.data.person_companies_count === 0){
-          this.$router.replace('/profile/add-companies')
-        }
-        // this.$router.replace('/')
-        // this.$emit('update:auth', true)
+        this.$store.dispatch('login', {user, $router: this.$router});
       }
     }
   }
