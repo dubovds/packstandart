@@ -36,7 +36,7 @@
                   </div>
                   <div class="form__item">
                     <input
-                      class=""
+                      class
                       type="checkbox"
                       value="Плательщик НДС"
                       v-model="newCompany.company.vat"
@@ -44,7 +44,7 @@
                     <label>Плательщик НДС</label>
                   </div>
                   <div class="form__item">
-                    <input 
+                    <input
                       :disabled="isDisabledEdrpou"
                       class="input form-control"
                       type="number"
@@ -53,7 +53,7 @@
                     >
                   </div>
                   <div class="form__item">
-                    <input 
+                    <input
                       class="input form-control"
                       type="number"
                       placeholder="ИНН"
@@ -76,31 +76,25 @@
                       v-model="newCompany.company.real_address"
                     >
                   </div>
-                  
                 </div>
                 <div class="col-md-6">
-                 
-                  
                   <div class="form__item">
                     <input
-                      
                       class="input form-control"
                       type="text"
                       placeholder="Адрес доставки по умолчанию"
                       v-model="newCompany.company.delivery_address"
                     >
                   </div>
-                  
+
                   <div class="form__item">
-                    <input
-                      class=""
-                      type="checkbox"
-                      v-model="useRealAdress"
-                    >
-                    <label>{{useRealAdress}} Использовать физический адрес</label>
+                    <input class type="checkbox" 
+                            v-model="useRealAdress"
+                            v-on:change="useAddress">
+                    <label>Использовать физический адрес</label>
                   </div>
                   <div class="form__item">
-                    <input 
+                    <input
                       class="input form-control"
                       type="number"
                       placeholder="Номер банковского счета"
@@ -108,7 +102,7 @@
                     >
                   </div>
                   <div class="form__item">
-                    <input 
+                    <input
                       class="input form-control"
                       type="number"
                       placeholder="Код МФО банка"
@@ -126,7 +120,6 @@
                   </div>
                   <div class="form__item">
                     <input
-                      
                       class="input form-control"
                       type="text"
                       placeholder="ФИО руководителя"
@@ -134,12 +127,39 @@
                     >
                   </div>
                 </div>
-                <div class="buttons-list">
-                    <button type="submit" class="form__btn form__btn_registration"
+              </div>
+              <div class="title title_form">Контактные лица</div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form__item">
+                    <input
+                      class="input form-control"
+                      type="text"
+                      placeholder="ФИО"
+                      v-model="newCompany.company.contacts.fio"
                     >
-                      Сохранить
-                    </button>
+                  </div>
+                  <div class="form__item">
+                    <input
+                      class="input form-control"
+                      type="tel"
+                      placeholder="Телефон 1"
+                      v-model="newCompany.company.phone1"
+                    >
+                  </div>
+                  <div class="form__item">
+                    <input
+                      class="input form-control"
+                      type="tel"
+                      placeholder="Телефон 2"
+                      v-model="newCompany.company.phone2"
+                    >
+                  </div>
+                  <div class="buttons-list">
+                    <button type="submit" class="form__btn form__btn_registration">Сохранить</button>
+                  </div>
                 </div>
+                <div class="col-md-6"></div>
               </div>
             </form>
           </div>
@@ -165,48 +185,56 @@ export default {
           real_address: null,
           delivery_address: null,
           director: null,
+          contacts: {
+            fio: null,
+            phone1: null,
+            phone2: null
+          },
           bank_account: null,
           bank_uuid: null,
           inn: null,
           vat: null,
-          vat_number: null,
+          vat_number: null
         },
         mfo: null
-        
       },
-      useRealAdress: false,
+      useRealAdress: false
     };
   },
   methods: {
     addCompany() {
       const axios = require("axios");
-       
-        axios
-          .post("http://test1.iti.dp.ua/api/person/company/", this.newCompany)
-          .then(response => {
-            console.log(response);
-            console.log(response.data.status);
-            
-          })
-          .catch(error => {
-                    this.errors = error.response.data.errors;
-                });
+
+      axios
+        .post("http://test1.iti.dp.ua/api/person/company/", this.newCompany)
+        .then(response => {
+          console.log(response);
+          console.log(response.data.status);
+        })
+        .catch(error => {
+          this.errors = error.response.data.errors;
+        });
+    },
+    useAddress(){
+      if(this.useRealAdress === true){
+        this.newCompany.company.delivery_address = this.newCompany.company.real_address
+      }
     }
   },
   computed: {
-    isDisabledEdrpou(){
-      if (this.newCompany.company.vat === true){
-        return false
+    isDisabledEdrpou() {
+      if (this.newCompany.company.vat === true) {
+        return false;
       } else {
-        return true
-      } 
+        return true;
+      }
     },
-    isDisabledBank(){
-      if (this.newCompany.mfo){
-        return false
+    isDisabledBank() {
+      if (this.newCompany.mfo) {
+        return false;
       } else {
-        return true
-      } 
+        return true;
+      }
     }
   }
 };

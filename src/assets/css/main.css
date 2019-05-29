@@ -157,7 +157,7 @@ input:focus:-ms-input-placeholder {
 
 .menu__list {
   padding: 0;
-  margin: 0;
+  margin: 10px 0 0;
   list-style-type: none;
   text-align: center;
 }
