@@ -5,13 +5,14 @@ Vue.use(Vuex);
 
 import menu from "./menu";
 import user from "./user";
-// import mutations from "./mutations";
-// import actions from "./actions";
-// import getters from "./getters";
+import login from "./login";
+import registrationUser from "./registrationUser"
 
 export default new Vuex.Store({
   modules: {
     menu,
-    user
+    user,
+    login,
+    registrationUser
   }
 })

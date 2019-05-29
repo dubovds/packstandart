@@ -51,26 +51,28 @@
                 <router-link
                   class="button__header button__header_entry"
                   :to="`${link.url}`"
-                  @click.prevent="exit"
                 >{{ link.title }}</router-link>
               </li>
             </ul>
+
             <ul class="menu__list menu__list_auth clearfix">
+              <li class="menu__item menu__item_button" v-if="auth === true">
+                <span class="button__header button__header_entry">
+                  {{ personeName }}
+                </span>
+              </li>
               <li
                 class="menu__item menu__item_button"
                 v-for="link in navAuthLogin"
                 :key="link.title"
                 v-if="link.auth === auth"
-                
               >
                 <span class="button__header button__header_entry"
                       @click="exit(link)">
                   {{ link.title }}
                 </span>
-
-                
-                
               </li>
+              
             </ul>
 
             <ul class="menu__list clearfix">
@@ -98,6 +100,9 @@ export default {
     };
   },
   computed: {
+    personeName() {
+      return this.$store.getters.personeName;
+    },
     auth() {
       return this.$store.getters.auth;
     },

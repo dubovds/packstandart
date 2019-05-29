@@ -27,13 +27,9 @@ export default {
   },
   data(){
     return{
-        //auth: false
     }
   },
   computed: {
-    // auth(){
-    //   return false ;
-    // }
   },
   beforeCreate() {
     this.$store.dispatch('checkToken');

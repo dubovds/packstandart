@@ -11,6 +11,7 @@ import Login from '@/pages/auth/Login'
 // import profile from '@/pages/Profile'
 import myCompanies from '@/pages/profile/my-companies'
 import addCompanies from '@/pages/profile/add-companies'
+import orderHistory from '@/pages/profile/order-history'
 
 Vue.use(Router);
 
@@ -62,6 +63,11 @@ export default new Router({
           path: 'add-companies',
           name: 'addCompanies',
           component: addCompanies
+        },
+        {
+          path: 'order-history',
+          name: 'orderHistory',
+          component: orderHistory
         }
       ]
     }

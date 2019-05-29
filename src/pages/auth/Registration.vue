@@ -102,7 +102,6 @@
 
 <script>
 import { required, sameAs, minLength, email, numeric } from "vuelidate/lib/validators";
-import { setTimeout } from 'timers';
 
 export default {
   name: "Registration",
@@ -145,36 +144,15 @@ export default {
       if (this.$v.$invalid) {
         this.submitStatus = "ERROR";
       } else {
-        const axios = require("axios");
         const user = {
           fio: this.username,
           phone: this.phone,
           email: this.mail,
           password: this.password
-        };
-        axios
-          .post("http://test1.iti.dp.ua/api/auth/register/", user)
-          .then(response => {
-            console.log(response);
-            console.log(response.data.status);
-            if (response.data.status) {
-              this.submitStatus = "PENDING";
-              setTimeout(() => {
-                this.submitStatus = "OK";
-              }, 1000);
-              setTimeout(() => {
-                this.$router.push("/");
-              }, 3000);
-            }
-          })
-          .catch(error => {
-                    this.errors = error.response.data.errors;
-                });
+        }
+        this.$store.dispatch('registration', { user, $router: this.$router });
       }
     }
-  },
-  created: function() {
-    //this.getAllPosts()
   }
 };
 </script>
