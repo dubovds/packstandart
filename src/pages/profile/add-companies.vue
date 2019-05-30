@@ -1,11 +1,11 @@
 <template>
-  <section class="section section_registration">
+<section class="section section_registration">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-xl-12 col-md-8 col-12">
           <div class="form-block">
             <div class="title title_form">Добавить компанию</div>
-            <div class="subtitle">Заполните все поля обязательные поля</div>
+            <div class="subtitle">Заполните все обязательные поля</div>
 
             <form class="form" action="#" @submit.prevent="addCompany">
               <div class="row">
@@ -91,7 +91,7 @@
                     <input class type="checkbox" 
                             v-model="useRealAdress"
                             v-on:change="useAddress">
-                    <label>{{useRealAdress}} Использовать физический адрес</label>
+                    <label> Использовать физический адрес</label>
                   </div>
                   <div class="form__item">
                     <input
@@ -106,7 +106,8 @@
                       class="input form-control"
                       type="number"
                       placeholder="Код МФО банка"
-                      v-model="newCompany.company.mfo"
+                      v-model="mfo"
+                      v-on:change="getMfo"
                     >
                   </div>
                   <div class="form__item">
@@ -131,7 +132,7 @@
               <div class="title title_form">Контактные лица</div>
               <div class="row">
                 <div class="col-md-6">
-                  <div class="form__item">
+                  <!-- <div class="form__item">
                     <input
                       class="input form-control"
                       type="text"
@@ -144,15 +145,15 @@
                       class="input form-control"
                       type="tel"
                       placeholder="Телефон 1"
-                      v-model="newCompany.company.phone1"
+                      v-model="newCompany.company.contacts.phone1"
                     >
                   </div>
-                  <!-- <div class="form__item">
+                  <div class="form__item">
                     <input
                       class="input form-control"
                       type="tel"
                       placeholder="Телефон 2"
-                      v-model="newCompany.company.phone2"
+                      v-model="newCompany.company.contacts.phone2"
                     >
                   </div> -->
                   <div class="buttons-list">
@@ -166,7 +167,14 @@
         </div>
       </div>
     </div>
+    <div class="test"
+    v-for="item in arrayMfos"
+    :key="item.uuid">
+      {{ item.bank_name }}
+    </div>
+    
   </section>
+
 </template>
 
 <script>
@@ -176,7 +184,6 @@ export default {
   data() {
     return {
       newCompany: {
-      
         person_uuid: localStorage.person_uuid,
         company: {
           short_name: null,
@@ -186,35 +193,37 @@ export default {
           real_address: null,
           delivery_address: null,
           director: null,
-          contacts: {
-            fio: null,
-            phone1: null,
-            skype: null
-          },
           bank_account: null,
           bank_uuid: null,
           inn: null,
           vat: null,
-          vat_number: null
+          vat_number: null,
+          contacts: [],
         },
-        //mfo: null
+        
+        
       },
-      useRealAdress: false
+      mfo: null,
+      useRealAdress: false,
+      arrayMfos: null
+      
     };
   },
   methods: {
-    addCompany() {
-      const axios = require("axios");
+    getMfo(){
 
-      axios
-        .post("http://test1.iti.dp.ua/api/person/company/", this.newCompany)
-        .then(response => {
-          console.log(response);
-          console.log(response.data.status);
+      const axios = require("axios");
+      if(this.mfo.length > "5" && this.mfo.length<"7"){
+        axios
+          .get("http://test1.iti.dp.ua/api/bank/?mfo=" + this.mfo)
+          .then(response => {
+            (this.info = response.data);
         })
-        .catch(error => {
-          this.errors = error.response.data.errors;
-        });
+      } 
+    },
+  
+    addCompany() {
+      this.$store.dispatch('addNewCompany', { newCompany: this.newCompany, $router: this.$router });
     },
     useAddress(){
       if(this.useRealAdress === true){
@@ -223,21 +232,21 @@ export default {
     }
   },
   computed: {
-    isDisabledEdrpou() {
-      if (this.newCompany.company.vat === true) {
-        return false;
+    isDisabledEdrpou(){
+      if (this.newCompany.company.vat === true){
+        return false
       } else {
-        return true;
-      }
+        return true
+      } 
     },
-    isDisabledBank() {
-      if (this.newCompany.mfo) {
-        return false;
+    isDisabledBank(){
+      if (this.newCompany.mfo){
+        return false
       } else {
-        return true;
-      }
+        return true
+      } 
     }
-  }
+  }    
 };
 </script>
 

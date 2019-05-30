@@ -977,12 +977,8 @@ input:focus:-ms-input-placeholder {
 }
 
 .profile__content {
-  position: absolute;
-  width: 80%;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  width: 90%;
+  margin: auto;
   background-color: rgba(255, 255, 255, 0.5);
   padding: 20px;
 }

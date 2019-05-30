@@ -7,12 +7,14 @@ import menu from "./menu";
 import user from "./user";
 import login from "./login";
 import registrationUser from "./registrationUser"
+import addCompany from "./addCompany"
 
 export default new Vuex.Store({
   modules: {
     menu,
     user,
     login,
-    registrationUser
+    registrationUser,
+    addCompany
   }
 })
