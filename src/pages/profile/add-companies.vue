@@ -91,7 +91,7 @@
                     <input class type="checkbox" 
                             v-model="useRealAdress"
                             v-on:change="useAddress">
-                    <label>Использовать физический адрес</label>
+                    <label>{{useRealAdress}} Использовать физический адрес</label>
                   </div>
                   <div class="form__item">
                     <input
@@ -147,14 +147,14 @@
                       v-model="newCompany.company.phone1"
                     >
                   </div>
-                  <div class="form__item">
+                  <!-- <div class="form__item">
                     <input
                       class="input form-control"
                       type="tel"
                       placeholder="Телефон 2"
                       v-model="newCompany.company.phone2"
                     >
-                  </div>
+                  </div> -->
                   <div class="buttons-list">
                     <button type="submit" class="form__btn form__btn_registration">Сохранить</button>
                   </div>
@@ -176,6 +176,7 @@ export default {
   data() {
     return {
       newCompany: {
+      
         person_uuid: localStorage.person_uuid,
         company: {
           short_name: null,
@@ -188,7 +189,7 @@ export default {
           contacts: {
             fio: null,
             phone1: null,
-            phone2: null
+            skype: null
           },
           bank_account: null,
           bank_uuid: null,
@@ -196,7 +197,7 @@ export default {
           vat: null,
           vat_number: null
         },
-        mfo: null
+        //mfo: null
       },
       useRealAdress: false
     };
@@ -242,3 +243,4 @@ export default {
 
 <style scoped>
 </style>
+
