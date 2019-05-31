@@ -111,13 +111,9 @@
                     >
                   </div>
                   <div class="form__item">
-                    <input
-                      :disabled="isDisabledBank"
-                      class="input form-control"
-                      type="text"
-                      placeholder="Наименование банка"
-                      v-model="newCompany.company.bank_uuid"
-                    >
+                    <div class="input form-control">
+                      {{ arrayMfo.bank_name }}
+                    </div>
                   </div>
                   <div class="form__item">
                     <input
@@ -132,15 +128,18 @@
               <div class="title title_form">Контактные лица</div>
               <div class="row">
                 <div class="col-md-6">
-                  <!-- <div class="form__item">
+                  <div class="form__item">
                     <input
                       class="input form-control"
                       type="text"
                       placeholder="ФИО"
-                      v-model="newCompany.company.contacts.fio"
+                      v-model="fio"
                     >
                   </div>
-                  <div class="form__item">
+                  <div class="button" v-on:click="addContactPerson">
+                    test
+                  </div>
+                  <!-- <div class="form__item">
                     <input
                       class="input form-control"
                       type="tel"
@@ -166,13 +165,7 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="test"
-    v-for="item in arrayMfos"
-    :key="item.uuid">
-      {{ item.bank_name }}
-    </div>
-    
+    </div>    
   </section>
 
 </template>
@@ -201,24 +194,33 @@ export default {
           contacts: [],
         },
         
-        
       },
+      cont: [],
       mfo: null,
       useRealAdress: false,
-      arrayMfos: null
+      arrayMfo: [],
+      fio: null,
       
     };
   },
   methods: {
-    getMfo(){
+    addContactPerson(){
+      this.cont.push({
+        fio: this.fio
+      })
+      console.log(this.cont)
+    },
 
+    getMfo(){
       const axios = require("axios");
       if(this.mfo.length > "5" && this.mfo.length<"7"){
         axios
           .get("http://test1.iti.dp.ua/api/bank/?mfo=" + this.mfo)
           .then(response => {
-            (this.info = response.data);
+            (this.arrayMfo = response.data);
+            this.newCompany.company.bank_uuid = this.arrayMfo.uuid
         })
+        
       } 
     },
   
