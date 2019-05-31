@@ -46,9 +46,9 @@
                   <div class="form__item">
                     <input
                       :disabled="isDisabledEdrpou"
-                      class="input form-control"
+                      class="input input_nds form-control"
                       type="number"
-                      placeholder="Код ЕРДПОУ"
+                      placeholder="номер свидетельства плательщика НДС"
                       v-model="newCompany.company.vat_number"
                     >
                   </div>
@@ -127,24 +127,23 @@
               </div>
               <div class="title title_form">Контактные лица</div>
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6" 
+                    v-for="item in newCompany.company.contacts"
+                    :key="item.id">
                   <div class="form__item">
                     <input
                       class="input form-control"
                       type="text"
                       placeholder="ФИО"
-                      v-model="fio"
+                      v-model="item.fio"
                     >
                   </div>
-                  <div class="button" v-on:click="addContactPerson">
-                    test
-                  </div>
-                  <!-- <div class="form__item">
+                  <div class="form__item">
                     <input
                       class="input form-control"
                       type="tel"
                       placeholder="Телефон 1"
-                      v-model="newCompany.company.contacts.phone1"
+                      v-model="item.phone1"
                     >
                   </div>
                   <div class="form__item">
@@ -152,15 +151,88 @@
                       class="input form-control"
                       type="tel"
                       placeholder="Телефон 2"
-                      v-model="newCompany.company.contacts.phone2"
+                      v-model="item.phone2"
                     >
-                  </div> -->
+                  </div>
+                  <div class="form__item">
+                    <span>
+                      <input class type="checkbox" 
+                            id="viber"
+                            v-model="viber"
+                            >
+                      <label for="viber"> Viber</label>
+                    </span>
+                    <span>
+                      <input class type="checkbox" 
+                            id="telegram"
+                            v-model="telegram"
+                            >
+                      <label for="telegram"> Telegram</label>
+                    </span>
+                    <span>
+                      <input class type="checkbox" 
+                            id="whatsapp"
+                            v-model="whatsapp"
+                            >
+                      <label for="whatsapp"> Whatsapp</label>
+                    </span>
+                    <span>
+                      <input class type="checkbox" 
+                            id="skype"
+                            v-model="skype"
+                            >
+                      <label for="skype"> skype</label>
+                    </span>
+                  </div>
+                  <div class="form__item">
+                    <input
+                      class="input form-control"
+                      type="text"
+                      placeholder="viber"
+                      v-model="item.viber"
+                      :disabled="isDisabledViber"
+                    >
+                  </div>
+                  <div class="form__item">
+                    <input
+                      class="input form-control"
+                      type="text"
+                      placeholder="telegram"
+                      v-model="item.telegram"
+                      :disabled="isDisabledTelegram"
+                    >
+                  </div>
+                  <div class="form__item">
+                    <input
+                      class="input form-control"
+                      type="text"
+                      placeholder="whatsapp"
+                      v-model="item.whatsapp"
+                      :disabled="isDisabledWhatsapp"
+                    >
+                  </div>
+                  <div class="form__item">
+                    <input
+                      class="input form-control"
+                      type="text"
+                      placeholder="skype"
+                      v-model="item.skype"
+                       :disabled="isDisabledSkype"
+                    >
+                  </div>
+                  
+                </div>
+                <div class="col-md-6">
+                  <div class="btn" v-on:click="addContactPerson">
+                    Добавить контакт
+                  </div>
+                </div>
+              </div>
+              <div class="row">
                   <div class="buttons-list">
                     <button type="submit" class="form__btn form__btn_registration">Сохранить</button>
                   </div>
                 </div>
-                <div class="col-md-6"></div>
-              </div>
             </form>
           </div>
         </div>
@@ -191,24 +263,32 @@ export default {
           inn: null,
           vat: null,
           vat_number: null,
-          contacts: [],
+          contacts: [ ],
         },
         
       },
-      cont: [],
       mfo: null,
       useRealAdress: false,
       arrayMfo: [],
       fio: null,
-      
+      viber: null,
+      telegram: null,
+      whatsapp: null,
+      skype: null,
+      nextContact: 0
     };
   },
   methods: {
     addContactPerson(){
-      this.cont.push({
-        fio: this.fio
+      this.newCompany.company.contacts.push({
+        id: this.nextContact++,
+        fio: '', 
+        phone1: '',
+        viber: '',
+        telegram: '',
+        whatsapp: '',
+        skype: ''
       })
-      console.log(this.cont)
     },
 
     getMfo(){
@@ -241,8 +321,30 @@ export default {
         return true
       } 
     },
-    isDisabledBank(){
-      if (this.newCompany.mfo){
+    isDisabledViber(){
+      if (this.viber){
+        return false
+      } else {
+        return true
+      } 
+    },
+    
+    isDisabledTelegram(){
+      if (this.telegram){
+        return false
+      } else {
+        return true
+      } 
+    },
+    isDisabledWhatsapp(){
+      if (this.whatsapp){
+        return false
+      } else {
+        return true
+      } 
+    },
+    isDisabledSkype(){
+      if (this.skype){
         return false
       } else {
         return true
@@ -253,5 +355,11 @@ export default {
 </script>
 
 <style scoped>
+.input:disabled{
+  display: none
+}
+.input_nds:disabled{
+  display: block !important
+}
 </style>
 
