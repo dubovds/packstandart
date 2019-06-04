@@ -575,6 +575,24 @@ input:focus:-ms-input-placeholder {
   background-color: #92af6f;
 }
 
+.button_add {
+  display: inline-block;
+  background-color: #c0986c;
+  margin-top: 20px;
+  padding: 10px 30px;
+  color: #fff;
+  text-align: center;
+  font-family: "DroidSansBold";
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.button_add:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: #ae7f4b;
+}
+
 .button__header {
   padding: 7px 20px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -729,6 +747,15 @@ input:focus:-ms-input-placeholder {
 .form__item {
   position: relative;
   margin: 35px 0;
+}
+
+.form__item span {
+  padding-right: 15px;
+}
+
+.form__item span label {
+  padding-left: 5px;
+  margin-bottom: 0;
 }
 
 .form__btn {
@@ -984,6 +1011,7 @@ input:focus:-ms-input-placeholder {
 }
 
 .nav-profile {
+  height: 100%;
   background-color: rgba(163, 150, 129, 0.7);
   padding: 30px 0;
 }
@@ -1006,5 +1034,50 @@ input:focus:-ms-input-placeholder {
 
 .nav-profile a:hover {
   text-decoration: none;
+}
+
+.company__wrapper {
+  width: 75%;
+  margin: auto;
+}
+
+.company__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 15px;
+  padding: 28px 20px;
+}
+
+.company__name {
+  font-size: 20px;
+  font-family: "DroidSansBold";
+}
+
+.company__link {
+  display: inline-block;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-left: 20px;
+}
+
+.company__link_edit {
+  width: 25px;
+  height: 25px;
+  background-image: url("../images/edite.png");
+}
+
+.company__link_delete {
+  width: 19px;
+  height: 26px;
+  background-image: url("../images/trash.png");
 }
 /*# sourceMappingURL=main.css.map */

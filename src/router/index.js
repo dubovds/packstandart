@@ -11,7 +11,9 @@ import Login from '@/pages/auth/Login'
 // import profile from '@/pages/Profile'
 import myCompanies from '@/pages/profile/my-companies'
 import addCompanies from '@/pages/profile/add-companies'
+import editCompany from '@/pages/profile/edit-company'
 import orderHistory from '@/pages/profile/order-history'
+import editProfile from '@/pages/profile/edit-profile'
 
 Vue.use(Router);
 
@@ -63,6 +65,16 @@ export default new Router({
           path: 'add-companies',
           name: 'addCompanies',
           component: addCompanies
+        },
+        {
+          path: 'edit-company',
+          name: 'editCompany',
+          component: editCompany
+        },
+        {
+          path: 'edit-profile',
+          name: 'editProfile',
+          component: editProfile
         },
         {
           path: 'order-history',

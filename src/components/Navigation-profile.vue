@@ -31,7 +31,7 @@
         
       </li>
       <li>
-        <a href="#">
+        <a href="/profile/edit-profile">
           Личные данные
         </a>
       </li>

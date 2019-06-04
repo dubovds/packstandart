@@ -1,16 +1,12 @@
 <template>
   <div id="app">
-
-    <!-- <Navigation :auth='auth'></Navigation> -->
     <Navigation></Navigation>
     
     <div class="content-wrapper">
-      <!-- <router-view :auth.sync='auth'></router-view> -->
       <router-view></router-view>
     </div>
     
     <Footer></Footer>
-
   </div>
 </template>
 
@@ -28,8 +24,6 @@ export default {
   data(){
     return{
     }
-  },
-  computed: {
   },
   beforeCreate() {
     this.$store.dispatch('checkToken');

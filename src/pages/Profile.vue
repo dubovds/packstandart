@@ -2,10 +2,10 @@
   <section class="section section_profile profile">
     <div class="container-fluid">
       <div class="row no-gutter">
-        <div class="col-md-4">
+        <div class="col-md-3">
           <NavigationProfile></NavigationProfile>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
           <div class="profile__content-section">
             <router-view></router-view>
           </div>

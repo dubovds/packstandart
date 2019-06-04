@@ -1,17 +1,25 @@
 <template>
-  <section class="companies">
+  <section class="section companies">
     <div class="profile__content">
       <div class="title title_profile">Мои компании</div>
-      
-      <div class="company__name"
+      <div class="company__wrapper">
+        <div
+          class="company__item"
           v-for="(item) in arrayComanyInfos"
-          :key="item.uuid">
-        {{item.short_name}}
-        
+          :key="item.uuid"
+        >
+          <div class="company__name">
+            {{item.short_name}}
+          </div>
+          <div class="company__block-btn">
+            <a href="/profile/edit-company" class="company__link company__link_edit"></a>
+            <a href="#" class="company__link company__link_delete"></a>
+          </div> 
+        </div>
+        <a href="/profile/add-companies" class="button button_add">Добавить</a>
       </div>
-      <a href="/profile/add-companies" class="">
-        Добавить
-      </a>
+
+      
     </div>
   </section>
 </template>
@@ -21,29 +29,24 @@ export default {
 
   data() {
     return {
-      person_uuide: localStorage.getItem('person_uuid'),
+      person_uuide: localStorage.getItem("person_uuid"),
       arrayComanyInfos: null
     };
   },
-  methods:{
-    
-  },
-  mounted(){
+  methods: {},
+  mounted() {
     const axios = require("axios");
-      axios
-        .get("http://test1.iti.dp.ua/api/person/company/?person=" + this.person_uuide)
-        .then(response => {
-          (this.arrayComanyInfos = response.data);
-        })      
+    axios
+      .get(
+        "http://test1.iti.dp.ua/api/person/company/?person=" + this.person_uuide
+      )
+      .then(response => {
+        this.arrayComanyInfos = response.data;
+      });
   },
   computed: {}
 };
 </script>
 
 <style scoped>
-.company__name{
-  background-color: rgba(255, 255, 255, .7);
-  margin-bottom: 5px;
-  padding: 5px 10px
-}
 </style>

@@ -4,7 +4,6 @@ import Vuelidate from 'vuelidate'
 import BootstrapVue from 'bootstrap-vue'
 import store from './store'
 import router from './router'
-// import VueResource from 'vue-resource'
 import axios from './backend/vue-axios'
 
 
@@ -18,8 +17,6 @@ Vue.config.productionTip = false;
 
 Vue.use(Vuelidate)
 Vue.use(BootstrapVue)
-
-// Vue.use(VueResource)
 
 new Vue({
   store,
