@@ -5,21 +5,20 @@
       <div class="company__wrapper">
         <div
           class="company__item"
-          v-for="(item) in arrayComanyInfos"
+          v-for="(item) in allCompaniesInfo"
           :key="item.uuid"
         >
           <div class="company__name">
             {{item.short_name}}
           </div>
           <div class="company__block-btn">
-            <a href="/profile/edit-company" class="company__link company__link_edit"></a>
-            <a href="#" class="company__link company__link_delete"></a>
+            <router-link v-bind:to="'/profile/edit-company/' + item.uuid" class="company__link company__link_edit"></router-link>
+            <!-- <a href="/profile/edit-company" class="company__link company__link_edit" ></a> -->
+            <a href="#" class="company__link company__link_delete" v-on:click="delCompany(item.uuid)"></a>
           </div> 
         </div>
         <a href="/profile/add-companies" class="button button_add">Добавить</a>
-      </div>
-
-      
+      </div>      
     </div>
   </section>
 </template>
@@ -29,22 +28,28 @@ export default {
 
   data() {
     return {
-      person_uuide: localStorage.getItem("person_uuid"),
+      person_uuid: localStorage.getItem("person_uuid"),
+      //company_uuid: '',
       arrayComanyInfos: null
     };
   },
-  methods: {},
-  mounted() {
-    const axios = require("axios");
-    axios
-      .get(
-        "http://test1.iti.dp.ua/api/person/company/?person=" + this.person_uuide
-      )
-      .then(response => {
-        this.arrayComanyInfos = response.data;
-      });
+  methods: {
+    
+   delCompany(company_uuid){
+     this.$store.dispatch('deleteCompany', {
+       person_uuid: this.person_uuid,
+       company_uuid,
+     });
+   }
   },
-  computed: {}
+  mounted() {
+    this.$store.dispatch('getAllCompanies');
+  },
+  computed: {
+    allCompaniesInfo() {
+      return this.$store.getters.allCompaniesInfo;
+    },
+  }
 };
 </script>
 

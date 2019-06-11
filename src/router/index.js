@@ -67,7 +67,7 @@ export default new Router({
           component: addCompanies
         },
         {
-          path: 'edit-company',
+          path: 'edit-company/:id',
           name: 'editCompany',
           component: editCompany
         },

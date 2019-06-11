@@ -5,8 +5,8 @@
         <div class="col-xl-12 col-md-8 col-12">
           <div class="form-block">
             <div class="title title_form">Добавить компанию</div>
-            <div class="subtitle">Заполните все обязательные поля</div>
-
+            <div class="subtitle">Заполните все обязательные поля</div>    
+             
             <form class="form" action="#" @submit.prevent="addCompany">
               <div class="row">
                 <div class="col-md-6">
@@ -110,9 +110,9 @@
                       v-on:change="getMfo"
                     >
                   </div>
-                  <div class="form__item">
+                  <div class="form__item" >  
                     <div class="input form-control">
-                      {{ arrayMfo.bank_name }}
+                      {{ mfoInfo.bank_name }}
                     </div>
                   </div>
                   <div class="form__item">
@@ -158,28 +158,28 @@
                     <span>
                       <input class type="checkbox" 
                             id="viber"
-                            v-model="viber"
+                            v-model="newCompany.viber"
                             >
                       <label for="viber"> Viber</label>
                     </span>
                     <span>
                       <input class type="checkbox" 
                             id="telegram"
-                            v-model="telegram"
+                            v-model="newCompany.telegram"
                             >
                       <label for="telegram"> Telegram</label>
                     </span>
                     <span>
                       <input class type="checkbox" 
                             id="whatsapp"
-                            v-model="whatsapp"
+                            v-model="newCompany.whatsapp"
                             >
                       <label for="whatsapp"> Whatsapp</label>
                     </span>
                     <span>
                       <input class type="checkbox" 
                             id="skype"
-                            v-model="skype"
+                            v-model="newCompany.skype"
                             >
                       <label for="skype"> skype</label>
                     </span>
@@ -265,16 +265,18 @@ export default {
           vat_number: null,
           contacts: [ ],
         },
+        // todo: rename to isViberFieldEnabled, etc.
+        viber: null,
+        telegram: null,
+        whatsapp: null,
+        skype: null,
         
       },
       mfo: null,
       useRealAdress: false,
       arrayMfo: [],
       fio: null,
-      viber: null,
-      telegram: null,
-      whatsapp: null,
-      skype: null,
+      
       nextContact: 0
     };
   },
@@ -292,21 +294,16 @@ export default {
     },
 
     getMfo(){
-      const axios = require("axios");
       if(this.mfo.length > "5" && this.mfo.length<"7"){
-        axios
-          .get("http://test1.iti.dp.ua/api/bank/?mfo=" + this.mfo)
-          .then(response => {
-            (this.arrayMfo = response.data);
-            this.newCompany.company.bank_uuid = this.arrayMfo.uuid
-        })
-        
+        this.$store.dispatch('getMfo', {mfo: this.mfo});
+        this.newCompany.company.bank_uuid = this.mfoInfo.uuid
       } 
     },
   
     addCompany() {
       this.$store.dispatch('addNewCompany', { newCompany: this.newCompany, $router: this.$router });
     },
+
     useAddress(){
       if(this.useRealAdress === true){
         this.newCompany.company.delivery_address = this.newCompany.company.real_address
@@ -322,7 +319,7 @@ export default {
       } 
     },
     isDisabledViber(){
-      if (this.viber){
+      if (this.newCompany.viber){
         return false
       } else {
         return true
@@ -330,27 +327,31 @@ export default {
     },
     
     isDisabledTelegram(){
-      if (this.telegram){
+      if (this.newCompany.telegram){
         return false
       } else {
         return true
       } 
     },
     isDisabledWhatsapp(){
-      if (this.whatsapp){
+      if (this.newCompany.whatsapp){
         return false
       } else {
         return true
       } 
     },
     isDisabledSkype(){
-      if (this.skype){
+      if (this.newCompany.skype){
         return false
       } else {
         return true
       } 
+    },
+    mfoInfo() {
+      return this.$store.getters.mfoInfo;
     }
-  }    
+  },
+      
 };
 </script>
 

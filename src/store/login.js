@@ -12,7 +12,7 @@ export default{
     }
   },
 
-  actions:{
+  actions:{ 
     checkToken: ({ commit }) => {
       const token = localStorage.getItem('token');
       if (token) {

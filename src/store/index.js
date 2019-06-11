@@ -7,7 +7,7 @@ import menu from "./menu";
 import user from "./user";
 import login from "./login";
 import registrationUser from "./registrationUser"
-import addCompany from "./addCompany"
+import company from "./company"
 
 export default new Vuex.Store({
   modules: {
@@ -15,6 +15,7 @@ export default new Vuex.Store({
     user,
     login,
     registrationUser,
-    addCompany
+    company,
+    
   }
 })
