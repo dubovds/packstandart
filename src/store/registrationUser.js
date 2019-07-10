@@ -1,4 +1,5 @@
-const axios = require('axios');
+import axios from '../backend/vue-axios'
+
 import { setTimeout } from 'timers';
 
 export default {
@@ -14,7 +15,7 @@ export default {
   actions: {
     registration( context, {user, $router} ) {
       axios
-        .post("http://test1.iti.dp.ua/api/auth/register/", user)
+        .post("/auth/register/", user)
         .then(response => {
           if (response.data.status) {
             this.submitStatus = "PENDING";

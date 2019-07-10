@@ -13,6 +13,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import './assets/css/main.css'
 import './assets/js/custom'
 
+
 Vue.config.productionTip = false;
 
 Vue.use(Vuelidate)
@@ -24,3 +25,4 @@ new Vue({
   axios,
   render: h => h(App),
 }).$mount('#app');
+

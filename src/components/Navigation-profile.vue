@@ -12,9 +12,12 @@
         </a>
       </li>
       <li>
-        <a href="#">
-          Справочник изделий
-        </a>
+        <router-link
+                  class=""
+                  :to="'/profile/card'"
+                >
+                Справочник изделий
+        </router-link>
       </li>
       <li>
         <a href="#">

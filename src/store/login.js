@@ -1,4 +1,5 @@
-const axios = require('axios');
+import axios from '../backend/vue-axios'
+//const base = require('axios');
 
 export default{
 
@@ -21,8 +22,7 @@ export default{
       }
     },
     login({ commit }, { user, $router}) {
-      axios
-        .post('http://test1.iti.dp.ua/api/auth/login/', user)
+      axios.post('/auth/login/', user)
         .then(req => {
             console.log('login success', req);
             if (!req.data.token) {

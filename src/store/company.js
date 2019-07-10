@@ -1,4 +1,5 @@
-const axios = require('axios');
+import axios from '../backend/vue-axios'
+
 const person_uuid = localStorage.getItem('person_uuid')
 
 export default {
@@ -31,7 +32,7 @@ export default {
     addNewCompany( context, {newCompany, $router} ) {
 
       axios
-        .post("http://test1.iti.dp.ua/api/person/company/", newCompany)
+        .post("/person/company/", newCompany)
         .then(response => {
           console.log(response);
           console.log(response.data.status);
@@ -42,7 +43,7 @@ export default {
     updateCompany( context, {company, $router} ) {
 
       axios
-        .post("http://test1.iti.dp.ua/api/person/company/", {
+        .post("/person/company/", {
           company,
           person_uuid: localStorage.person_uuid,
         })
@@ -55,10 +56,10 @@ export default {
 
     deleteCompany( { commit }, {company_uuid, person_uuid}) {
       axios
-        .delete("http://test1.iti.dp.ua/api/person/company", {
+        .delete("/person/company", {
           params: {
             company: company_uuid,
-            person_uuid: person_uuid
+            person: person_uuid
           }
         })
         .then(() => {
@@ -68,7 +69,7 @@ export default {
 
     getMfo({commit}, {mfo}) {
       axios
-        .get("http://test1.iti.dp.ua/api/bank/?mfo=" + mfo)
+        .get("/bank/?mfo=" + mfo)
         .then(response => {
           commit("arrayMfoInfo",response.data);
         })
@@ -76,9 +77,11 @@ export default {
 
     getAllCompanies( {commit} ) {
       axios
-        .get(
-          "http://test1.iti.dp.ua/api/person/company/?person=" + person_uuid
-        )
+        .get("person/company/", {
+          params:{
+            person: person_uuid
+          }
+        })
         .then(response => {
           commit('arrayAllCompaniesInfo', response.data);
         });
@@ -87,7 +90,7 @@ export default {
     getCompany( {commit}, {id}){
       axios
         .get(
-          "http://test1.iti.dp.ua/api/person/company?person=" + person_uuid + "&company=" + id )
+          "/person/company?person=" + person_uuid + "&company=" + id )
         .then(response => {
           commit('arrayCompanyInfo', response.data);
         });

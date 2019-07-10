@@ -8,6 +8,7 @@ import user from "./user";
 import login from "./login";
 import registrationUser from "./registrationUser"
 import company from "./company"
+import card from "./card"
 
 export default new Vuex.Store({
   modules: {
@@ -16,6 +17,6 @@ export default new Vuex.Store({
     login,
     registrationUser,
     company,
-    
+    card
   }
 })
