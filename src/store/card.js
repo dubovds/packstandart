@@ -4,19 +4,23 @@ const person_uuid = localStorage.getItem('person_uuid')
 export default {
 
   state: {
-    boxInfo: null
+    boxInfo: null,
+    uuidProduct: null
   },
 
   mutations: {
     arrayBoxInfo: (state, payload) => {
       state.boxInfo = payload
+    },
+    uuidProductBack: (state, payload) => {
+      state.uuidProduct = payload
     }
   },
 
   actions: {
     getBoxInfo({commit}) {
       axios
-        .get("http://test1.iti.dp.ua/api/person/boxesinfo",{
+        .get("/person/boxesinfo",{
           params:{
             person: person_uuid
           }
@@ -25,21 +29,31 @@ export default {
           commit("arrayBoxInfo",response.data);
         })
     },
-    addNewCard( context, {newCard} ) {
-
+    async addNewCard( { commit }, {newCard} ) {
+      const response = await axios
+        .post("/person/product/", newCard);
+      console.log(response);
+      localStorage.setItem('product_uuid', response.data.uuid);
+      commit('uuidProductBack', localStorage.getItem('product_uuid'));
+    },
+    addImages( context, {data}){
       axios
-        .post("http://test1.iti.dp.ua/api/person/product/", newCard)
+        .post('/person/product/upload/', data)
         .then(response => {
-          console.log(response);
-          console.log(response.data.status);
-                     
-        });
+          console.log(response)
+        })
+        .catch(error => {
+          console.log(error.response)
+        })
     }
   },
 
   getters: {
     boxInfo(state) {
       return state.boxInfo
+    },
+    uuidProduct(state) {
+      return state.uuidProduct
     }
   }
 }

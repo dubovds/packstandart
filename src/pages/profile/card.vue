@@ -6,8 +6,8 @@
           <div class="col-xl-12 col-md-8 col-12">
             <div class="form-block">
               <div class="title title_form">Заявка на техкарту</div>
-                          
-              <form class="form" action="#" @submit.prevent="addCard" v-if="boxInfo">
+        {{ uuidProduct }}
+              <form class="form" action="#" v-if="boxInfo">
                 <div class="row">
                   <div class="col-md-3">
 
@@ -95,18 +95,21 @@
                         Посмотреть шаблон
                       </button>
                     </div>
+                    <form id="uploadForm" name="uploadForm" method='post' enctype="multipart/form-data">
+                      <input type="hidden" v-bind:value="uuidProduct" name="product">
+                      <input type="file" id="logo" name="logo"><span>logo</span>
+                      <input type="file" id="template" name="template"><span>template</span>
+                    </form>
                     <div class="form__item">
-                      <input type="file" id="file" name="file">
-                      <input type="file" id="file" name="file">
+                      
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="buttons-list">
-                    <button type="submit" class="form__btn form__btn_registration">Сохранить</button>
-                  </div>
-                </div>
+                
               </form>
+              <div class="buttons-list">
+                <input type=button class="form__btn form__btn_registration" value=Сохранить @click="uploadCarInfo">
+              </div>
           
             </div>
           </div>
@@ -153,9 +156,43 @@ export default {
     }
   },
   methods: {
-    addCard() {
-      this.$store.dispatch('addNewCard', { newCard: this.newCard });
+    async uploadCarInfo(){
+      await this.$store.dispatch('addNewCard', { newCard: this.newCard });
+      
+      if(this.uuidProduct != 0){
+        let data = new FormData(document.getElementById('uploadForm'))
+        var imageLogo = document.querySelector('#logo')
+        var imageTemplate = document.querySelector('#template')
+        console.log(imageLogo.files[0])
+        console.log(imageTemplate.files[0])
+        data.append('logo', imageLogo.files[0])
+        data.append('template', imageTemplate.files[0])
+        this.$store.dispatch('addImages', { data: data });  
+      } else{
+        console.log("uuid_product is absent")
+      }
+      
+        
     },
+    uploadFiles () {
+      const axios = require('axios');
+         
+      const data = new FormData(document.getElementById('uploadForm'))
+      var imageLogo = document.querySelector('#logo')
+      console.log(imageLogo.files[0])
+      data.append('logo', imageLogo.files[0])
+      axios.post('http://test1.iti.dp.ua/api/person/product/upload/', data, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error.response)
+      })
+    }
   },
   mounted() {
     this.$store.dispatch('getBoxInfo');
@@ -163,7 +200,10 @@ export default {
   computed: {
     boxInfo() {
       return this.$store.getters.boxInfo;
-    }
+    },
+    uuidProduct() {
+      return this.$store.getters.uuidProduct;
+    },
   },
       
 };
