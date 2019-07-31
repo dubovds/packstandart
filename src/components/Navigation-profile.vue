@@ -2,7 +2,7 @@
   <nav class="nav-profile">
     <ul>
       <li>
-        <a href="#">
+        <a href="/profile/checkout">
           Оформить заказ
         </a>
       </li>

@@ -9,6 +9,7 @@ import Contacts from '@/pages/Contacts'
 import Registration from '@/pages/auth/Registration'
 import Login from '@/pages/auth/Login'
 // import profile from '@/pages/Profile'
+import checkout from '@/pages/profile/checkout'
 import myCompanies from '@/pages/profile/my-companies'
 import addCompanies from '@/pages/profile/add-companies'
 import editCompany from '@/pages/profile/edit-company'
@@ -56,7 +57,11 @@ export default new Router({
       name: 'profile',
       component: Profile,
       children:[
-        
+        {
+          path: 'checkout',
+          name: 'checkout',
+          component: checkout
+        },
         {
           path: 'companies',
           name: 'companies',

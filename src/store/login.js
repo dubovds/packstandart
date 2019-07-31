@@ -4,12 +4,16 @@ import axios from '../backend/vue-axios'
 export default{
 
   state:{
-    personeName: null
+    personeName: null,
+    error: false
   },
 
   mutations:{
     login_name : (state, payload) => {
       state.personeName = payload
+    },
+    set_error : (state, payload) => {
+      state.error = payload
     }
   },
 
@@ -24,7 +28,7 @@ export default{
     login({ commit }, { user, $router}) {
       axios.post('/auth/login/', user)
         .then(req => {
-            console.log('login success', req);
+            //console.log('login success', req);
             if (!req.data.token) {
               delete localStorage.token;
               delete localStorage.person_uuid;
@@ -48,12 +52,13 @@ export default{
             
           })
           .catch(error => {
-            console.error(error);
+            //console.error(error);
             delete localStorage.token;
             delete localStorage.person_uuid;
             delete localStorage.person_companies_count;
             delete localStorage.person_name;
             commit('set_auth', false);
+            commit('set_error', true);
           });
     },
     logout({ commit} ) {
@@ -65,6 +70,9 @@ export default{
   getters:{
     personeName(state) {
       return state.personeName
-    }
+    },
+    error(state) {
+      return state.error
+    },
   }  
 }

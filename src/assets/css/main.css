@@ -318,16 +318,6 @@ input:focus:-ms-input-placeholder {
   top: 16px;
 }
 
-.menu-mobile {
-  display: none;
-  width: 250px;
-  position: absolute;
-  top: 30px;
-  right: 15px;
-  background-color: #dfead1;
-  z-index: 2;
-}
-
 #nav-icon3.open span:nth-child(1) {
   top: 24px;
   width: 0%;
@@ -366,6 +356,7 @@ input:focus:-ms-input-placeholder {
 
 .section {
   padding: 60px 0;
+  height: 100%;
 }
 
 .section_intro {
@@ -390,21 +381,25 @@ input:focus:-ms-input-placeholder {
 }
 
 .section_registration {
+  height: 100%;
   padding-top: 130px;
   background: url("../images/screen-reg.png") no-repeat 50% 50%;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .section_news {
   padding-top: 130px;
   background: url("../images/screen-news.png") no-repeat 50% 0%;
-  background-size: contain;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .section_price {
   padding-top: 130px;
   background: url("../images/screen-price.png") no-repeat 50% 0%;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .section_contacts {
@@ -730,6 +725,7 @@ input:focus:-ms-input-placeholder {
 }
 
 .form-block {
+  position: relative;
   padding: 25px 80px;
   padding: 20px;
 }
@@ -796,6 +792,21 @@ input:focus:-ms-input-placeholder {
   position: absolute;
   top: -25px;
   font-style: italic;
+}
+
+.label-file {
+  cursor: pointer;
+  display: block;
+  background: url("../images/file.png") no-repeat 0% 50%;
+  background-size: contain;
+  padding-left: 35px;
+  margin-bottom: 10px;
+}
+
+.input-file {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
 }
 
 .news {
@@ -1084,5 +1095,46 @@ input:focus:-ms-input-placeholder {
   width: 19px;
   height: 26px;
   background-image: url("../images/trash.png");
+}
+
+.checkout__item {
+  background: #fff;
+  margin-bottom: 10px;
+  padding: 5px 15px;
+}
+
+.checkout__add-button-block {
+  position: relative;
+  width: 300px;
+  background-color: #c0986c;
+  padding: 10px 30px;
+  color: #fff;
+  margin: auto;
+  text-align: center;
+  cursor: pointer !important;
+}
+
+.checkout__add-list {
+  list-style-type: none;
+  padding: 0;
+  display: none;
+  border: 1px solid #c0986c;
+  background-color: #fff;
+  color: #000;
+  padding: 10px 0;
+  margin: 0 -30px -10px;
+}
+
+.checkout__add-list.open {
+  display: block;
+}
+
+.checkout__add-list li {
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.checkout__add-list li:hover {
+  background-color: #e6e6e6;
 }
 /*# sourceMappingURL=main.css.map */

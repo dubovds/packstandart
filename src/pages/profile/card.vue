@@ -1,16 +1,22 @@
 <template>
   <section class="section section_registration">
-    
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-xl-12 col-md-8 col-12">
             <div class="form-block">
               <div class="title title_form">Заявка на техкарту</div>
-        {{ uuidProduct }}
+        
               <form class="form" action="#" v-if="boxInfo">
                 <div class="row">
                   <div class="col-md-3">
-
+                    <div class="form__item">
+                      <input
+                        class="input form-control"
+                        type="text"
+                        placeholder="Название"
+                        v-model="newCard.product.name"
+                      >
+                    </div>
                     <div class="form__item">
                       <input
                         class="input form-control"
@@ -39,7 +45,7 @@
                   </div>
                   <div class="col-md-3">
                     <div class="form__item">
-                      <select v-model="newCard.product.cardboard_uuid" placeholder="test" class="select">
+                      <select v-model="newCard.product.cardboard_uuid" placeholder="" class="select">
                         <option value="">Марка картона</option>
                         <option 
                           v-for="item in boxInfo.cardboard"
@@ -52,7 +58,7 @@
                     </div>
 
                     <div class="form__item">
-                      <select v-model="newCard.product.bumps_uuid" placeholder="test" class="select">
+                      <select v-model="newCard.product.bumps_uuid" placeholder="" class="select">
                         <option value="">Марка гофры</option>
                         <option 
                           v-for="item in boxInfo.bumps"
@@ -65,7 +71,7 @@
                     </div>
 
                     <div class="form__item">
-                      <select v-model="newCard.product.cardboard_color_uuid" placeholder="test" class="select">
+                      <select v-model="newCard.product.cardboard_color_uuid" placeholder="" class="select">
                         <option value="">Цвет картона</option>
                         <option 
                           v-for="item in boxInfo.cardboard_colors"
@@ -81,6 +87,9 @@
                   </div>
                   <div class="col-md-4">
                     <div class="form__item">
+                      <!-- <v-select :options="options" label="title">
+                        
+                      </v-select> -->
                       <select v-model="newCard.product.standart_uuid" class="select">
                         <option value="">Номер шаблона по ГОСТу</option>
                         <option 
@@ -97,8 +106,12 @@
                     </div>
                     <form id="uploadForm" name="uploadForm" method='post' enctype="multipart/form-data">
                       <input type="hidden" v-bind:value="uuidProduct" name="product">
-                      <input type="file" id="logo" name="logo"><span>logo</span>
-                      <input type="file" id="template" name="template"><span>template</span>
+                      
+                      <label class="label-file" for="logo">Прикрепить логотип</label>
+                      <input class="input-file" type="file" id="logo" name="logo">
+                      
+                      <label class="label-file" for="template">Прикрепить чертеж</label>
+                      <input class="input-file" type="file" id="template" name="template">
                     </form>
                     <div class="form__item">
                       
@@ -108,7 +121,7 @@
                 
               </form>
               <div class="buttons-list">
-                <input type=button class="form__btn form__btn_registration" value=Сохранить @click="uploadCarInfo">
+                <input type=button class="form__btn form__btn_registration" value=Сохранить @click="uploadCardInfo">
               </div>
           
             </div>
@@ -127,17 +140,21 @@
           <img v-bind:src="item.template_image">        
         </div>
     </div>
+    
   </section>
   
 
 </template>
 
 <script>
+
+
 export default {
   name: "card",
 
   data() {
     return {
+      //options: [],
       newCard:{
         person: localStorage.person_uuid,
         product:{
@@ -149,14 +166,14 @@ export default {
           cardboard_uuid: '',
           cardboard_color_uuid: '',
           bumps_uuid: '',
-          name: 'коробка',
+          name: '',
         },
       },
       showModal: false
     }
   },
   methods: {
-    async uploadCarInfo(){
+    async uploadCardInfo(){
       await this.$store.dispatch('addNewCard', { newCard: this.newCard });
       
       if(this.uuidProduct != 0){
@@ -170,46 +187,33 @@ export default {
         this.$store.dispatch('addImages', { data: data });  
       } else{
         console.log("uuid_product is absent")
-      }
-      
-        
-    },
-    uploadFiles () {
-      const axios = require('axios');
-         
-      const data = new FormData(document.getElementById('uploadForm'))
-      var imageLogo = document.querySelector('#logo')
-      console.log(imageLogo.files[0])
-      data.append('logo', imageLogo.files[0])
-      axios.post('http://test1.iti.dp.ua/api/person/product/upload/', data, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      })
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error.response)
-      })
+      }   
     }
   },
   mounted() {
-    this.$store.dispatch('getBoxInfo');
+    this.$store.dispatch('getBoxInfo');   
+    
   },
   computed: {
+    options(){
+      var options= [];
+      for(var item of this.boxInfo.boxes_standarts){
+        options.push(item.name)
+      }
+      return options
+    },
     boxInfo() {
       return this.$store.getters.boxInfo;
     },
     uuidProduct() {
       return this.$store.getters.uuidProduct;
     },
-  },
-      
+  } 
 };
 </script>
 
 <style scoped>
+
 .modal.show{
   display: block
 }
@@ -228,6 +232,7 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%)
   }
+  .buttons-list{
+    width: 245px;
+  }
 </style>
-
-//upload/
