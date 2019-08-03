@@ -5,7 +5,8 @@ export default{
 
   state:{
     personeName: null,
-    error: false
+    error: false,
+    uuidPerson: null
   },
 
   mutations:{
@@ -14,6 +15,9 @@ export default{
     },
     set_error : (state, payload) => {
       state.error = payload
+    },
+    uuidPersonBack: (state, payload) => {
+      state.uuidPerson = payload
     }
   },
 
@@ -23,6 +27,7 @@ export default{
       if (token) {
         commit('set_auth', true);
         commit('login_name', localStorage.getItem('person_name'));
+        commit('uuidPersonBack', localStorage.getItem('person_uuid'));
       }
     },
     login({ commit }, { user, $router}) {
@@ -43,6 +48,7 @@ export default{
             localStorage.setItem('person_name', req.data.person_name);
             commit('set_auth', true);
             commit('login_name', localStorage.getItem('person_name'));
+            commit('uuidPersonBack', localStorage.getItem('person_uuid'));
 
             if(req.data.person_companies_count === 0){
               $router.replace('/profile/add-companies')
@@ -52,7 +58,7 @@ export default{
             
           })
           .catch(error => {
-            //console.error(error);
+            console.error(error);
             delete localStorage.token;
             delete localStorage.person_uuid;
             delete localStorage.person_companies_count;
@@ -74,5 +80,8 @@ export default{
     error(state) {
       return state.error
     },
+    uuidPerson(state) {
+      return state.uuidPerson
+    }
   }  
 }

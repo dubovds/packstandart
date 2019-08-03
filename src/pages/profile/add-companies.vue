@@ -27,12 +27,13 @@
                     >
                   </div>
                   <div class="form__item">
-                    <input
+                    <masked-input class="input form-control" v-model="newCompany.company.edrpou" mask="1111111111" placeholder="Код ЕРДПОУ" />
+                    <!-- <input
                       class="input form-control"
                       type="number"
                       placeholder="Код ЕРДПОУ"
                       v-model="newCompany.company.edrpou"
-                    >
+                    > -->
                   </div>
                   <div class="form__item">
                     <input
@@ -102,7 +103,9 @@
                     >
                   </div>
                   <div class="form__item">
+                    <span class="mfoError" v-if="mfoError" >Не верный код МФО</span>
                     <input
+                      :class="{mfoerror: mfoError}"
                       class="input form-control"
                       type="number"
                       placeholder="Код МФО банка"
@@ -110,6 +113,7 @@
                       v-on:change="getMfo"
                     >
                   </div>
+                  
                   <div class="form__item" >  
                     <div class="input form-control">
                       {{ mfoInfo.bank_name }}
@@ -243,11 +247,16 @@
 </template>
 
 <script>
+import MaskedInput from 'vue-masked-input'
 export default {
+  
   name: "addCompanies",
-
+  components: {
+    MaskedInput
+  },
   data() {
     return {
+      mfoError: false,
       newCompany: {
         person_uuid: localStorage.person_uuid,
         company: {
@@ -296,8 +305,11 @@ export default {
     getMfo(){
       if(this.mfo.length > "5" && this.mfo.length<"7"){
         this.$store.dispatch('getMfo', {mfo: this.mfo});
-        this.newCompany.company.bank_uuid = this.mfoInfo.uuid
-      } 
+        this.newCompany.company.bank_uuid = this.mfoInfo.uuid;
+        this.mfoError = false
+      } else{
+        this.mfoError = true
+      }
     },
   
     addCompany() {
@@ -349,7 +361,10 @@ export default {
     },
     mfoInfo() {
       return this.$store.getters.mfoInfo;
-    }
+    },
+    // mfoError() {
+    //   return this.$store.getters.mfoError;
+    // }
   },
       
 };
@@ -361,6 +376,14 @@ export default {
 }
 .input_nds:disabled{
   display: block !important
+}
+.mfoError{
+  position: absolute;
+  color: red;
+  top: -25px
+}
+.mfoerror{
+  border: 1px solid red
 }
 </style>
 

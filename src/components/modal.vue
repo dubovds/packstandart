@@ -1,5 +1,5 @@
 <template>
-  <b-modal id="orderModal" centered>
+  <b-modal id="orderModal" ref="orderModal" centered>
                 
           <div class="modal-body">
             Для того, чтобы сделать заказ Вам нужно

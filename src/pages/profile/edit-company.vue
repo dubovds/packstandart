@@ -4,10 +4,8 @@
       <div class="row justify-content-center">
         <div class="col-xl-12 col-md-8 col-12">
           <div class="form-block">
-            {{companyInfo}}
             <div class="title title_form">Изменить компанию</div>
-            
-          
+         
             <form class="form" action="#" @submit.prevent="saveCompany" v-if="companyInfo">
              
                 <div class="row">
@@ -216,7 +214,7 @@ export default {
     };
   },
   created(){
-    this.$store.dispatch('getCompany', {id: this.id})
+    this.$store.dispatch('getCompany', {id: this.id, person_uuid: this.person_uuid})
   },
   methods: {
     addContactPerson() {
@@ -231,7 +229,6 @@ export default {
       });
     },
     saveCompany() {
-      
       this.$store.dispatch('updateCompany', { company: this.companyInfo, $router: this.$router });
       //this.$store.dispatch('saveChangesCompany', { companyInfo: this.companyInfo, $router: this.$router });
     },

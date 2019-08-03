@@ -1,13 +1,14 @@
 import axios from '../backend/vue-axios'
 
-const person_uuid = localStorage.getItem('person_uuid')
+//const person_uuid = localStorage.getItem('person_uuid')
 
 export default {
 
   state: {
     allCompaniesInfo: null,
     companyInfo: null,
-    mfoInfo: []
+    mfoInfo: [],
+    mfoError: "не верный код МФО"
   },
 
   mutations: {
@@ -25,6 +26,9 @@ export default {
       const companyToDeleteIndex = state.allCompaniesInfo.findIndex(({uuid}) => uuid === payload)
       // delete company from all companies
       state.allCompaniesInfo.splice(companyToDeleteIndex, 1);
+    },
+    mfo_error: (state, payload) => {
+      state.mfoError = payload
     }
   },
 
@@ -56,7 +60,7 @@ export default {
 
     deleteCompany( { commit }, {company_uuid, person_uuid}) {
       axios
-        .delete("/person/company", {
+        .delete("/person/company/", {
           params: {
             company: company_uuid,
             person: person_uuid
@@ -73,9 +77,13 @@ export default {
         .then(response => {
           commit("arrayMfoInfo",response.data);
         })
+        .catch(error => {
+          console.log(error, this.mfoError);
+          commit("mfo_error",error)
+        });
     },
 
-    getAllCompanies( {commit} ) {
+    getAllCompanies( {commit}, {person_uuid} ) {
       axios
         .get("person/company/", {
           params:{
@@ -87,13 +95,14 @@ export default {
         });
     },
     
-    getCompany( {commit}, {id}){
+    getCompany( {commit}, {id, person_uuid}){
       axios
         .get(
-          "/person/company?person=" + person_uuid + "&company=" + id )
+          "/person/company/?person=" + person_uuid + "&company=" + id )
         .then(response => {
           commit('arrayCompanyInfo', response.data);
-        });
+        })
+       
     },
   },
 
@@ -106,6 +115,9 @@ export default {
     },
     mfoInfo(state) {
       return state.mfoInfo
+    },
+    mfoError(state) {
+      return state.mfoError
     }
   }
 }

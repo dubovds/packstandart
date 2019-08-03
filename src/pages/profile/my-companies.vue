@@ -28,8 +28,6 @@ export default {
 
   data() {
     return {
-      person_uuid: localStorage.getItem("person_uuid"),
-      //company_uuid: '',
       arrayComanyInfos: null
     };
   },
@@ -37,17 +35,22 @@ export default {
     
    delCompany(company_uuid){
      this.$store.dispatch('deleteCompany', {
-       person_uuid: this.person_uuid,
+       person_uuid: this.uuidPerson,
        company_uuid,
      });
    }
   },
   mounted() {
-    this.$store.dispatch('getAllCompanies');
+    this.$store.dispatch('getAllCompanies', {
+      person_uuid: this.uuidPerson,
+    });
   },
   computed: {
     allCompaniesInfo() {
       return this.$store.getters.allCompaniesInfo;
+    },
+    uuidPerson() {
+      return this.$store.getters.uuidPerson;
     },
   }
 };

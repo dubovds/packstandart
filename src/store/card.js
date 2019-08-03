@@ -27,7 +27,7 @@ export default {
         })
         .then(response => {
           commit("arrayBoxInfo",response.data);
-        })
+        }) 
     },
     async addNewCard( { commit }, {newCard} ) {
       const response = await axios

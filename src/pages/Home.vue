@@ -26,7 +26,7 @@
                 </p>
 
               </div>
-              <div class="button button_order" v-b-modal.orderModal>
+              <div class="button button_order" @click="makeOrder" >
                 заказать
               </div>
             </div>
@@ -112,7 +112,7 @@
           </div>
           <div class="col-md-3">
             <div class="button button_order button_order_nm"
-                 v-b-modal.orderModal                  
+                 @click="makeOrder"                 
             >
               заказать
             </div>
@@ -143,11 +143,23 @@
       return {
         
       }
-    }
-
+    },
+    methods:{
+      makeOrder(){
+        if(this.auth){
+          this.$router.replace('/profile/checkout')
+        } else{
+          this.$bvModal.show('orderModal')
+        }
+      }
+    },
+    computed: {
+      auth() {
+        return this.$store.getters.auth;
+      }
+    },
   }
 </script>
-
 
 <style>
 

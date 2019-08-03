@@ -4,16 +4,20 @@
         <div class="row justify-content-center">
           <div class="col-xl-12 col-md-8 col-12">
             <div class="form-block">
-              <div class="title title_form">Оформить заказ</div>   
-              <select v-model="newOrder.order.company_uuid">
-                <option  
-                        v-for="(item) in allCompaniesInfo"
-                        :key="item.uuid"
-                        :value="item.uuid"
-                >
-                {{item.short_name}}        
-                </option>
-              </select>
+              <div class="title title_form">Оформить заказ</div>  
+              <div class="form__item">
+                <select v-model="newOrder.order.company_uuid" class="select">
+                  <option value="">Номер шаблона по ГОСТу</option>
+                  <option  
+                          v-for="(item) in allCompaniesInfo"
+                          :key="item.uuid"
+                          :value="item.uuid"
+                  >
+                  {{item.short_name}}        
+                  </option>
+                </select>
+              </div> 
+              
               <div class="checkout__block">
                 <div class="checkout__item" v-for="(item, index) in selected" v-bind:key="item.uuid">
                   <div class="row align-items-center">
@@ -56,10 +60,7 @@
                   </ul>
                 </div>
                 <button v-on:click="addNewOrder" value="">button</button>
-                
-                Selected: {{ selected }} <br>
-                {{ newOrder }}<br>
-                
+                               
               </div>                     
             </div>
           </div>
@@ -118,7 +119,9 @@ export default {
   },
   mounted() {
     this.$store.dispatch('getAllBoxes');
-    this.$store.dispatch('getAllCompanies');
+    this.$store.dispatch('getAllCompanies', {
+      person_uuid: this.uuidPerson,
+    });
   },
   computed: {
     allBoxes() {
@@ -126,7 +129,10 @@ export default {
     },
     allCompaniesInfo() {
       return this.$store.getters.allCompaniesInfo;
-    }
+    },
+    uuidPerson() {
+      return this.$store.getters.uuidPerson;
+    },
   }
 }
 </script>
