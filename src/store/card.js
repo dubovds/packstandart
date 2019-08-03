@@ -20,7 +20,7 @@ export default {
   actions: {
     getBoxInfo({commit}) {
       axios
-        .get("/person/boxesinfo",{
+        .get("/person/boxesinfo/",{
           params:{
             person: person_uuid
           }

@@ -107,11 +107,11 @@
                     <form id="uploadForm" name="uploadForm" method='post' enctype="multipart/form-data">
                       <input type="hidden" v-bind:value="uuidProduct" name="product">
                       
-                      <label class="label-file" for="logo">Прикрепить логотип</label>
-                      <input class="input-file" type="file" id="logo" name="logo">
+                      <label class="label-file" for="logo" id="logo-text">Прикрепить логотип</label>
+                      <input class="input-file" type="file" id="logo" name="logo" v-on:change="alertFilenameLogo">
                       
-                      <label class="label-file" for="template">Прикрепить чертеж</label>
-                      <input class="input-file" type="file" id="template" name="template">
+                      <label class="label-file" for="template" id="template-text">Прикрепить чертеж</label>
+                      <input class="input-file" type="file" id="template" name="template"  v-on:change="alertFilenameTemplate">
                     </form>
                     <div class="form__item">
                       
@@ -167,6 +167,7 @@ export default {
           cardboard_color_uuid: '',
           bumps_uuid: '',
           name: '',
+          
         },
       },
       showModal: false
@@ -185,9 +186,26 @@ export default {
         data.append('logo', imageLogo.files[0])
         data.append('template', imageTemplate.files[0])
         this.$store.dispatch('addImages', { data: data });  
+        this.newCard.product.name = "";
+        this.newCard.product.length = "";
+        this.newCard.product.height = "";
+        this.newCard.product.width = "";
+        this.newCard.product.cardboard_color_uuid = "";
+        this.newCard.product.box_color = "";
+        this.newCard.product.standart_uuid = "";
+        this.newCard.product.cardboard_uuid = "";
+        this.newCard.product.bumps_uuid = "";
       } else{
         console.log("uuid_product is absent")
       }   
+    },
+    alertFilenameLogo() {
+      var thefile = document.getElementById('logo');
+      document.getElementById('logo-text').innerHTML =  thefile.value; 
+    },
+    alertFilenameTemplate() {
+      var thefile = document.getElementById('template');
+      document.getElementById('template-text').innerHTML =  thefile.value; 
     }
   },
   mounted() {

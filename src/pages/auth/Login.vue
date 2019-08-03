@@ -79,6 +79,7 @@
   font-size: 20px;
 }
 .login__error.error{
-  display: block;
+  display: block; 
 }
+
 </style>

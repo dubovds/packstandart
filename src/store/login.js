@@ -65,6 +65,7 @@ export default{
             delete localStorage.person_name;
             commit('set_auth', false);
             commit('set_error', true);
+            
           });
     },
     logout({ commit} ) {
