@@ -16,7 +16,7 @@ export default {
   actions: {
     getAllBoxes({commit}) {
       axios
-        .get("/person/product",{
+        .get("/person/product/",{
           params:{
             person: person_uuid
           }
@@ -27,12 +27,11 @@ export default {
     },
 
     async addOrder( context , {newOrder} ) {
-      // const response = await axios
       axios
         .post("/person/order/", newOrder)
         .then(response => {
           console.log(response);
-          console.log(response.data.status);         
+          console.log(response.data.statusText);         
         })
     },
     

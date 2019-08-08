@@ -57,7 +57,7 @@
 
             <ul class="menu__list menu__list_auth clearfix">
               <li class="menu__item menu__item_button" v-if="auth === true">
-                <span class="button__header button__header_entry">
+                <span class="button__header button__header_name">
                   {{ personeName }}
                 </span>
               </li>

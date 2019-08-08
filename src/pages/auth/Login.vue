@@ -51,6 +51,7 @@
         email: '',
         password: '',
         infos: [],
+        loginError: false
       }      
     },
     methods:{

@@ -1,13 +1,13 @@
 <template>
-  <section class="section section_registration">
+  <section class="section">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-xl-12 col-md-8 col-12">
             <div class="form-block">
               <div class="title title_form">Оформить заказ</div>  
               <div class="form__item">
-                <select v-model="newOrder.order.company_uuid" class="select">
-                  <option value="">Номер шаблона по ГОСТу</option>
+                <select v-model="newOrder.order.company_uuid" class="select"> 
+                  <option value="">Выбрать компанию</option>
                   <option  
                           v-for="(item) in allCompaniesInfo"
                           :key="item.uuid"
@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-sm-4">
                       <div class="checkout__name">
-                        {{item.name}}
+                       
                       </div>
                     </div>
                     <div class="col-sm-2">
@@ -45,7 +45,7 @@
                   </div>
                 </div>
                 <div class="checkout__add-button-block" @click="show = !show">
-                  <div class="checkout__add-button" >
+                  <div class="button button_add" >
                     Добавить коробку
                   </div>
                   <ul v-bind:class="{open: show}" class="checkout__add-list">
@@ -59,8 +59,7 @@
                     </li>
                   </ul>
                 </div>
-                <button v-on:click="addNewOrder" value="">button</button>
-                               
+                <button v-on:click="addNewOrder" value="" class="button button_order">Оформить заказ</button>
               </div>                     
             </div>
           </div>
@@ -111,6 +110,9 @@ export default {
       }
 
       await this.$store.dispatch('addOrder', { newOrder: this.newOrder });
+      this.selected = [];
+      this.newOrder.order.order_details = []
+
     },
     delSelected: function(index){
       this.selected.splice(index, 1);

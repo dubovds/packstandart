@@ -1,5 +1,5 @@
 <template>
-  <section class="section section_registration">
+  <section class="section">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-xl-12 col-md-8 col-12">
@@ -121,7 +121,7 @@
                 
               </form>
               <div class="buttons-list">
-                <input type=button class="form__btn form__btn_registration" value=Сохранить @click="uploadCardInfo">
+                <input type=button class="button button_registration" value=Сохранить @click="uploadCardInfo">
               </div>
           
             </div>

@@ -1,5 +1,5 @@
 <template>
-<section class="section section_registration">
+<section class="section">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-xl-12 col-md-8 col-12">
@@ -227,14 +227,16 @@
                   
                 </div>
                 <div class="col-md-6">
-                  <div class="btn" v-on:click="addContactPerson">
+                  <div class="button button_add" v-on:click="addContactPerson">
                     Добавить контакт
                   </div>
                 </div>
               </div>
               <div class="row">
-                  <div class="buttons-list">
-                    <button type="submit" class="form__btn form__btn_registration">Сохранить</button>
+                  <div class="col-12">
+                    <div class="buttons-list">
+                      <button type="submit" class="button button_registration">Сохранить</button>
+                    </div>
                   </div>
                 </div>
             </form>

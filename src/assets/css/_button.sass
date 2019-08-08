@@ -1,16 +1,15 @@
 .button
+  color: $white
+  padding: 10px 30px
+  text-align: center
+  font-family: $bold
   cursor: pointer
   @include transition
 
   &_order
-    //width: 226px
     background-color: $green
-    color: $white
     text-transform: uppercase
     margin: 20px auto 0
-    padding: 10px 30px
-    text-align: center
-    font-family: $bold
     font-size: 24px
 
     @include tablet
@@ -30,17 +29,19 @@
     display: inline-block
     background-color: #c0986c
     margin-top: 20px
-    padding: 10px 30px
-    color: $white
-    text-align: center
-    font-family: $bold
-    font-size: 20px
+    font-size: 16px
     text-decoration: none
 
     &:hover
       color: $white
       text-decoration: none
       background-color: darken(#c0986c, 10%)
+
+  &_registration
+      background-color: $green
+
+      &:hover
+        background-color: $greenHover
 
   &__header
     padding: 7px 20px
@@ -63,6 +64,15 @@
       @include tablet
         background-color: transparent
 
+    &_name
+      cursor: inherit
+
+      &:hover
+        background-color: rgba(255,255,255,0.5)
+
 .close
   &:focus
     outline: none
+
+.buttons-list
+  margin-top: 25px

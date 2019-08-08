@@ -7,7 +7,7 @@ export default{
       { title: "Новости", url: "/news", auth: 'both' },
       { title: "Прайс", url: "/price", auth: 'both' },
       { title: "Контакты", url: "/contacts", auth: 'both' },
-      { title: "Личный кабинет", url: "/profile", auth: true }
+      { title: "Личный кабинет", url: "/profile/order-history", auth: true }
     ],
     navAuth: [
       { title: "Вход", url: "/login", auth: false },

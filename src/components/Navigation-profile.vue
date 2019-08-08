@@ -7,7 +7,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="/profile/order-history">
           История заказов
         </a>
       </li>
