@@ -146,20 +146,12 @@
                     >
                   </div>
                   <div class="form__item">
-                    <input
-                      class="input form-control"
-                      type="tel"
-                      placeholder="Телефон 1"
-                      v-model="item.phone1"
-                    >
+                    <masked-input class="input form-control" v-model="item.phone1" mask="\+\38 (011) 111 -11-11" placeholder="Телефон 1" />
+                    
                   </div>
                   <div class="form__item">
-                    <input
-                      class="input form-control"
-                      type="tel"
-                      placeholder="Телефон 2"
-                      v-model="item.phone2"
-                    >
+                    <masked-input class="input form-control" v-model="item.phone2" mask="\+\38 (011) 111 -11-11" placeholder="Телефон 2" />
+                    
                   </div>
                   <div class="form__item">
                     <span>
