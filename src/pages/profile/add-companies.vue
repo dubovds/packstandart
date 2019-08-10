@@ -132,8 +132,11 @@
               <div class="title title_form">Контактные лица</div>
               <div class="row">
                 <div class="col-md-6" 
-                    v-for="item in newCompany.company.contacts"
+                    v-for="(item, index) in newCompany.company.contacts"
                     :key="item.id">
+                  <div class="persone-contact">
+                    <button type="button" class="btn btn-danger " v-on:click ="delContactPerson(index)">удалить контакт</button>
+                  
                   <div class="form__item">
                     <input
                       class="input form-control"
@@ -224,6 +227,7 @@
                        :disabled="isDisabledSkype"
                     >
                   </div>
+                  </div>
                   
                 </div>
                 <div class="col-md-6">
@@ -302,6 +306,9 @@ export default {
         whatsapp: '',
         skype: ''
       })
+    },
+    delContactPerson: function(x){
+      this.newCompany.company.contacts.splice(x, 1);
     },
 
     getMfo(){
@@ -386,6 +393,15 @@ export default {
 }
 .mfoerror{
   border: 1px solid red
+}
+
+.persone-contact{
+  position: relative;
+}
+.persone-contact .btn-danger{
+  position: absolute;
+  top: -45px;
+  right: 0;
 }
 </style>
 
