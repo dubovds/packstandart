@@ -30,7 +30,7 @@ export default{
         commit('uuidPersonBack', localStorage.getItem('person_uuid'));
       }
     },
-    login({ commit }, { user, $router}) {
+    login({ commit }, { user, $router }) {
       axios.post('/auth/login/', user)
         .then(req => {
             //console.log('login success', req);
@@ -65,7 +65,9 @@ export default{
             delete localStorage.person_name;
             commit('set_auth', false);
             commit('set_error', true);
-            
+            setTimeout(function () {
+              commit('set_error', false)
+          }, 6000);
           });
     },
     logout({ commit} ) {

@@ -16,6 +16,7 @@ import editCompany from '@/pages/profile/edit-company'
 import orderHistory from '@/pages/profile/order-history'
 import editProfile from '@/pages/profile/edit-profile'
 import card from '@/pages/profile/card'
+import archive from '@/pages/profile/archive'
 
 Vue.use(Router);
 
@@ -91,6 +92,11 @@ export default new Router({
           path: 'card',
           name: 'card',
           component: card
+        },
+        {
+          path: 'archive',
+          name: 'archive',
+          component: archive
         }
       ]
     }

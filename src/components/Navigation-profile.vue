@@ -20,7 +20,7 @@
         </router-link>
       </li>
       <li>
-        <a href="#">
+        <a href="/profile/archive">
           Архив изделий
         </a>
       </li>

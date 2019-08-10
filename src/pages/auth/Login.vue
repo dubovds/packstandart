@@ -51,7 +51,8 @@
         email: '',
         password: '',
         infos: [],
-        loginError: false
+        loginError: false,
+        //error: null
       }      
     },
     methods:{
@@ -60,14 +61,20 @@
            email: this.email,
            password: this.password
         }
-        this.$store.dispatch('login', {user, $router: this.$router});
+        this.$store.dispatch('login', {user, $router: this.$router}).then();
+        
+        
       }
     },
-    computed: {
-    
+    mounted() {
+        
+      
+      //this.data.error = null;
+    },
+    computed:{
       error() {
         return this.$store.getters.error;
-      },
+      }
     }
   }
 </script>
