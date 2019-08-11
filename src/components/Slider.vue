@@ -39,13 +39,9 @@
       <div class="row justify-content-md-center">
         <div class="col-xl-8">
           <div class="text-block">
-            <div class="text-block__content">
+            <div class="text-block__content" v-if="textContent">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-
-              <p>
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+               {{ textContent.our_products }}
               </p>
             </div>
           </div>
@@ -63,6 +59,14 @@
     components: {
       Carousel,
       Slide
-    }
+    },
+    mounted() {
+      this.$store.dispatch('getTextContent');   
+    },
+    computed: {
+      textContent() {
+      return this.$store.getters.textContent;
+    },
+    },
   }
 </script>

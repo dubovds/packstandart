@@ -5,7 +5,6 @@
           <div class="col-xl-12 col-md-8 col-12">
             <div class="form-block">
               <div class="title title_form">Заявка на техкарту</div>
-        
               <form class="form" action="#" v-if="boxInfo">
                 <div class="row">
                   <div class="col-md-3">

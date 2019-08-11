@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-sm-4">
                       <div class="checkout__name">
-                       
+                       {{item.name}}
                       </div>
                     </div>
                     <div class="col-sm-2">

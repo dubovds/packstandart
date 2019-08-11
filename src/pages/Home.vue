@@ -1,29 +1,20 @@
 <template>
   <div class="wrapper">
-    <section class="section section_intro">
+    <section class="section section_intro" v-if="textContent">
       <div class="container">
         <div class="row">
           <div class="col-xl-6 col-md-8">
-            <div class="text-block">
+            <div class="text-block">       
               <div class="title">
                 Завод ПакСтандарт 
               </div>
               <div class="text-block__content">
+                
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  {{textContent.main_description}}
                 </p>
 
-                <p>
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                </p>
-
-                <p>
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-
-                <p>
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                </p>
+                
 
               </div>
               <div class="button button_order" @click="makeOrder" >
@@ -46,19 +37,9 @@
                 Почему мы?
               </div>
               <div class="text-block__content">
-                <ul class="text-block__list">
+                <ul class="text-block__list" v-for="item in textContent.why_we" v-bind:key="item.index">
                   <li class="text-block__item">
-                    Lorem ipsum dolor sit amet
-                  </li>
-                  <li class="text-block__item">
-                    Сonsectetur adipiscing elit
-                  </li>
-                  <li class="text-block__item">
-                    Sed do eiusmod tempor incididunt <br>
-                    ut labore et dolore magna aliqua
-                  </li>
-                  <li class="text-block__item">
-                    Ut enim ad minim veniam
+                    {{ item.li}}
                   </li>
                 </ul>
               </div>
@@ -153,10 +134,16 @@
         }
       }
     },
+    mounted() {
+      this.$store.dispatch('getTextContent');   
+    },
     computed: {
       auth() {
         return this.$store.getters.auth;
-      }
+      },
+      textContent() {
+      return this.$store.getters.textContent;
+    },
     },
   }
 </script>

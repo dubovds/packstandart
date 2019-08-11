@@ -10,6 +10,7 @@ import registrationUser from "./registrationUser"
 import company from "./company"
 import card from "./card"
 import order from "./order"
+import text from "./text"
 
 export default new Vuex.Store({
   modules: {
@@ -19,6 +20,7 @@ export default new Vuex.Store({
     registrationUser,
     company,
     card,
-    order
+    order,
+    text
   }
 })

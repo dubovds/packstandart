@@ -27,13 +27,13 @@
                     >
                   </div>
                   <div class="form__item">
-                    <masked-input class="input form-control" v-model="newCompany.company.edrpou" mask="1111111111" placeholder="Код ЕРДПОУ" />
-                    <!-- <input
+                    <!-- <masked-input class="input form-control" v-model="newCompany.company.edrpou" mask="1111111111" placeholder="Код ЕРДПОУ" /> -->
+                    <input
                       class="input form-control"
                       type="number"
                       placeholder="Код ЕРДПОУ"
                       v-model="newCompany.company.edrpou"
-                    > -->
+                    >
                   </div>
                   <div class="form__item">
                     <input

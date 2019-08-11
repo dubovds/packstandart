@@ -6,7 +6,7 @@
           <div class="form-block">
             <div class="title title_form">Изменить компанию</div>
          
-            <form class="form" action="#" @submit.prevent="saveCompany" v-if="companyInfo">
+            <form class="form" action="#" @submit.prevent="" v-if="companyInfo">
              
                 <div class="row">
                   <div class="col-md-6">
@@ -121,8 +121,10 @@
                 </div>
                 <div class="title title_form">Контактные лица</div>
                 <div class="row" >
-                  <div class="col-md-6" v-for="item in companyInfo.contacts" :key="item.id">
-                    <div class="form__item">
+                  <div class="col-md-6" v-for="(item, index) in companyInfo.contacts" :key="item.id">
+                   <div class="persone-contact">
+                     <button type="button" class="btn btn-danger " v-on:click ="delContactPerson(index)">удалить контакт</button>
+                      <div class="form__item">
                       <input
                         class="input form-control"
                         type="text"
@@ -183,14 +185,17 @@
                         
                       >
                     </div>
+                   </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="btn" v-on:click="addContactPerson">Добавить контакт</div>
+                    <div class="button button_add" v-on:click="addContactPerson">
+                      Добавить контакт
+                    </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="buttons-list">
-                    <button type="submit" class="form__btn form__btn_registration">Сохранить</button>
+                    <button type="submit" class="form__btn form__btn_registration" v-on:click="saveCompany">Сохранить</button>
                   </div>
                 </div>
             </form>
@@ -202,15 +207,16 @@
 </template>
 
 <script>
+
 export default {
   name: "editCompany",
-
+  
   data() {
     return {
       short_name: null,
       id: this.$route.params.id,
       person_uuid: localStorage.person_uuid,
-     
+      nextContact: 0
     };
   },
   created(){
@@ -218,7 +224,7 @@ export default {
   },
   methods: {
     addContactPerson() {
-      this.companyInfo.company.contacts.push({
+      this.companyInfo.contacts.push({
         id: this.nextContact++,
         fio: "",
         phone1: "",
@@ -227,6 +233,9 @@ export default {
         whatsapp: "",
         skype: ""
       });
+    },
+    delContactPerson: function(x){
+      this.companyInfo.contacts.splice(x, 1);
     },
     saveCompany() {
       this.$store.dispatch('updateCompany', { company: this.companyInfo, $router: this.$router });
@@ -254,6 +263,14 @@ export default {
 }
 .input_nds:disabled {
   display: block !important;
+}
+.persone-contact{
+  position: relative;
+}
+.persone-contact .btn-danger{
+  position: absolute;
+  top: -45px;
+  right: 0;
 }
 </style>
 
