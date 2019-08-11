@@ -5,7 +5,8 @@ export default {
 
   state: {
     allBoxes: null,
-    archiveBoxesForPerson: null
+    archiveBoxesForPerson: null,
+    boxesForPerson: null
   },
 
   mutations: {
@@ -14,6 +15,9 @@ export default {
     },
     arrayArchiveBoxesForPerson: (state, payload) => {
       state.archiveBoxesForPerson = payload
+    },
+    arrayBoxesForPerson: (state, payload) => {
+      state.boxesForPerson = payload
     }
   },
 
@@ -50,7 +54,18 @@ export default {
           commit("arrayArchiveBoxesForPerson",response.data);
         })
     },
-    
+    getPersonBoxes({commit}) {
+      axios
+        .get("/person/product/",{
+          params:{
+            person: person_uuid,
+            archival: 'False'
+          }
+        })
+        .then(response => {
+          commit("arrayBoxesForPerson",response.data);
+        })
+    },
   },
 
   getters: {
@@ -59,6 +74,9 @@ export default {
     },
     archiveBoxesForPerson(state) {
       return state.archiveBoxesForPerson
+    },
+    boxesForPerson(state) {
+      return state.boxesForPerson
     }
   }
 }

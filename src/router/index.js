@@ -17,6 +17,7 @@ import orderHistory from '@/pages/profile/order-history'
 import editProfile from '@/pages/profile/edit-profile'
 import card from '@/pages/profile/card'
 import archive from '@/pages/profile/archive'
+import catalog from '@/pages/profile/catalog'
 
 Vue.use(Router);
 
@@ -87,6 +88,11 @@ export default new Router({
           path: 'order-history',
           name: 'orderHistory',
           component: orderHistory
+        },
+        {
+          path: 'catalog',
+          name: 'catalog',
+          component: catalog
         },
         {
           path: 'card',

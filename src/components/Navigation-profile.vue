@@ -14,7 +14,7 @@
       <li>
         <router-link
                   class=""
-                  :to="'/profile/card'"
+                  :to="'/profile/catalog'"
                 >
                 Справочник изделий
         </router-link>

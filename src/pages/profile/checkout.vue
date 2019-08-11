@@ -18,19 +18,19 @@
                 </select>
               </div> 
               
-              <div class="checkout__block">
-                <div class="checkout__item" v-for="(item, index) in selected" v-bind:key="item.uuid">
+              <div class="boxInfo__block">
+                <div class="boxInfo__item" v-for="(item, index) in selected" v-bind:key="item.uuid">
                   <div class="row align-items-center">
                     <div class="col-sm-2">
                       <img src="@/assets/images/box.png" alt="">
                     </div>
                     <div class="col-sm-4">
-                      <div class="checkout__name">
+                      <div class="boxInfo__name">
                        {{item.name}}
                       </div>
                     </div>
                     <div class="col-sm-2">
-                      <div class="checkout__size">
+                      <div class="boxInfo__size">
                         {{ item.width }}x{{ item.length}}x{{ item.height}}
                       </div>
                     </div>
@@ -44,11 +44,11 @@
                     </div>
                   </div>
                 </div>
-                <div class="checkout__add-button-block" @click="show = !show">
+                <div class="boxInfo__add-button-block" @click="show = !show">
                   <div class="button button_add" >
                     Добавить коробку
                   </div>
-                  <ul v-bind:class="{open: show}" class="checkout__add-list">
+                  <ul v-bind:class="{open: show}" class="boxInfo__add-list">
                     <li v-for="item in allBoxes" v-bind:key="item.uuid" v-on:click="checkBox(item)">
                       <input type="hidden" v-bind:value="item.uuid">
                       <input type="hidden" v-bind:value="item.name" >                       

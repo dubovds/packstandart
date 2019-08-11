@@ -1,6 +1,6 @@
 <template>
   <section class="section section_product">
-    <div class="container">
+    <div class="container" v-if="textContent">
       <div class="row">
         <div class="col">
           <div class="title">
@@ -39,7 +39,7 @@
       <div class="row justify-content-md-center">
         <div class="col-xl-8">
           <div class="text-block">
-            <div class="text-block__content" v-if="textContent">
+            <div class="text-block__content" >
               <p>
                {{ textContent.our_products }}
               </p>

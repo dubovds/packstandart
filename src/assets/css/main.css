@@ -418,7 +418,7 @@ input:focus:-ms-input-placeholder {
 }
 
 .text-block {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.7);
   padding: 45px;
   color: #493b30;
 }
@@ -541,8 +541,14 @@ input:focus:-ms-input-placeholder {
   text-align: center;
   font-family: "DroidSansBold";
   cursor: pointer;
+  border: transparent;
   -webkit-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
+}
+
+.button a {
+  color: #fff;
+  text-decoration: none;
 }
 
 .button_order {
@@ -1113,20 +1119,29 @@ input:focus:-ms-input-placeholder {
   background-image: url("../images/trash.png");
 }
 
-.checkout__item {
+.boxInfo__item {
   background: #fff;
   margin-bottom: 10px;
   padding: 5px 15px;
 }
 
-.checkout__add-button-block {
+.boxInfo__name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.boxInfo__submit {
+  font-size: 14px;
+}
+
+.boxInfo__add-button-block {
   position: relative;
   width: 300px;
   margin: auto;
   text-align: center;
 }
 
-.checkout__add-list {
+.boxInfo__add-list {
   list-style-type: none;
   padding: 0;
   display: none;
@@ -1137,15 +1152,15 @@ input:focus:-ms-input-placeholder {
   margin: 0 -30px -10px;
 }
 
-.checkout__add-list.open {
+.boxInfo__add-list.open {
   display: block;
 }
 
-.checkout__add-list li {
+.boxInfo__add-list li {
   padding: 5px 0;
   cursor: pointer;
 }
 
-.checkout__add-list li:hover {
+.boxInfo__add-list li:hover {
   background-color: #e6e6e6;
 }
