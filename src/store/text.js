@@ -1,5 +1,5 @@
 import axios from '../backend/vue-axios'
-const person_uuid = localStorage.getItem('person_uuid')
+//const person_uuid = localStorage.getItem('person_uuid')
 
 export default {
 
