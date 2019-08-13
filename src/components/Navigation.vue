@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row align-items-center justify-content-between">
         <div class="col-lg-2 col-sm-4 col-5">
-          <div class="header__logo"></div>
+          <a href="/" class="header__logo"></a>
         </div>
         <div class="col-lg-10 col-sm-8 col-7">
           <div id="nav-icon3" @click="menuShow = !menuShow" :class="{ open: menuShow }">

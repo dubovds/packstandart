@@ -143,6 +143,7 @@ input:focus:-ms-input-placeholder {
 }
 
 .header__logo {
+  display: block;
   width: 114px;
   height: 70px;
   background: url("../images/logo.png") no-repeat 50% 50%;
@@ -635,6 +636,19 @@ input:focus:-ms-input-placeholder {
 
 .button__header_name:hover {
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+.button_brown {
+  display: inline-block;
+  background-color: #c0986c;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.button_brown:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: #ae7f4b;
 }
 
 .close:focus {
@@ -1163,4 +1177,31 @@ input:focus:-ms-input-placeholder {
 
 .boxInfo__add-list li:hover {
   background-color: #e6e6e6;
+}
+
+.order-history__item {
+  position: relative;
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 5px 15px;
+}
+
+.order-history__item span {
+  font-family: "DroidSansBold";
+}
+
+.order-history__block {
+  position: relative;
+  padding-left: 65px;
+  padding-bottom: 30px;
+}
+
+.order-history__icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.order-history__number {
+  font-family: "DroidSansBold";
 }

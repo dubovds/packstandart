@@ -11,7 +11,8 @@
                   <div class="col-sm-2">
                     <img src="@/assets/images/box.png" alt />
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-3">
+                    <input type="hidden" v-bind:value="item.uuid">
                     <div class="boxInfo__name">{{ item.name }}</div>
                     <div class="boxInfo__submit">
                       Техкарта
@@ -21,6 +22,9 @@
                   </div>
                   <div class="col-sm-2">
                     <div class="boxInfo__size">{{ item.width }}x{{ item.length}}x{{ item.height}}</div>
+                  </div>
+                  <div class="col-sm-5">
+                    <button class="button button_brown" v-if="item.submited">В архив</button>
                   </div>
                 </div>
               </div>

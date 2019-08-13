@@ -6,7 +6,8 @@ export default {
   state: {
     allBoxes: null,
     archiveBoxesForPerson: null,
-    boxesForPerson: null
+    boxesForPerson: null,
+    orderHistory: null
   },
 
   mutations: {
@@ -18,6 +19,9 @@ export default {
     },
     arrayBoxesForPerson: (state, payload) => {
       state.boxesForPerson = payload
+    },
+    arrayOrderHistory: (state, payload) => {
+      state.orderHistory = payload
     }
   },
 
@@ -38,8 +42,7 @@ export default {
       axios
         .post("/person/order/", newOrder)
         .then(response => {
-          console.log(response);
-          console.log(response.data.statusText);         
+          console.log(response);      
         })
     },
     getArchiveBoxes({commit}) {
@@ -66,6 +69,17 @@ export default {
           commit("arrayBoxesForPerson",response.data);
         })
     },
+    getOrders({commit}) {
+      axios
+        .get("/person/order/",{
+          params:{
+            person: person_uuid
+          }
+        })
+        .then(response => {
+          commit("arrayOrderHistory",response.data);
+        })
+    },
   },
 
   getters: {
@@ -77,6 +91,9 @@ export default {
     },
     boxesForPerson(state) {
       return state.boxesForPerson
+    },
+    orderHistory(state) {
+      return state.orderHistory
     }
   }
 }

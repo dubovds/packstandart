@@ -6,6 +6,7 @@ import store from './store'
 import router from './router'
 import axios from './backend/vue-axios'
 import vSelect from 'vue-select'
+import VueTheMask from 'vue-the-mask'
 Vue.component('v-select', vSelect)
 
 import './assets/css/droidsans.css'
@@ -20,6 +21,7 @@ Vue.config.productionTip = false;
 
 Vue.use(Vuelidate)
 Vue.use(BootstrapVue)
+Vue.use(VueTheMask)
 
 new Vue({
   store,

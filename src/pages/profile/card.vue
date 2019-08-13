@@ -5,6 +5,7 @@
           <div class="col-xl-12 col-md-8 col-12">
             <div class="form-block">
               <div class="title title_form">Заявка на техкарту</div>
+             
               <form class="form" action="#" v-if="boxInfo">
                 <div class="row">
                   <div class="col-md-3">
@@ -17,28 +18,16 @@
                       >
                     </div>
                     <div class="form__item">
-                      <input
-                        class="input form-control"
-                        type="text"
-                        placeholder="Длина"
-                        v-model="newCard.product.length"
-                      >
+                      <the-mask class="input form-control" :mask="['################']" v-model="newCard.product.length" placeholder="Длина, мм"/>
+                      
                     </div>
                     <div class="form__item">
-                      <input
-                        class="input form-control"
-                        type="text"
-                        placeholder="Ширина"
-                        v-model="newCard.product.width"
-                      >
+                      <the-mask class="input form-control" :mask="['################']" v-model="newCard.product.width" placeholder="Ширина, мм"/>
+                      
                     </div>
                     <div class="form__item">
-                      <input
-                        class="input form-control"
-                        type="text"
-                        placeholder="Высота"
-                        v-model="newCard.product.height"
-                      >
+                      <the-mask class="input form-control" :mask="['################']" v-model="newCard.product.height" placeholder="Высота, мм"/>
+                      
                     </div>
 
                   </div>
@@ -147,10 +136,9 @@
 
 <script>
 
-
 export default {
   name: "card",
-
+ 
   data() {
     return {
       //options: [],
