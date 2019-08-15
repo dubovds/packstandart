@@ -95,14 +95,15 @@
                     <label> Использовать физический адрес</label>
                   </div>
                   <div class="form__item">
-                    <input
+                    <masked-input class="input form-control" v-model="newCompany.company.bank_account" mask="AA 11 111111 \00000 11111111111111" placeholder="Номер банковского счета (IBAN)" />
+                    <!-- <input
                       class="input form-control"
                       type="number"
                       placeholder="Номер банковского счета"
                       v-model="newCompany.company.bank_account"
-                    >
+                    > -->
                   </div>
-                  <div class="form__item">
+                  <!-- <div class="form__item">
                     <span class="mfoError" v-if="mfoError" >Не верный код МФО</span>
                     <input
                       :class="{mfoerror: mfoError}"
@@ -112,13 +113,13 @@
                       v-model="mfo"
                       v-on:change="getMfo"
                     >
-                  </div>
+                  </div> -->
                   
-                  <div class="form__item" >  
+                  <!-- <div class="form__item" >  
                     <div class="input form-control">
                       {{ mfoInfo.bank_name }}
                     </div>
-                  </div>
+                  </div> -->
                   <div class="form__item">
                     <input
                       class="input form-control"
