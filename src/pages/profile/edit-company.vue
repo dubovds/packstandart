@@ -132,50 +132,73 @@
                         v-model="item.fio"
                       >
                     </div>
-                    <div class="form__item">
-                      <input
-                        class="input form-control"
-                        type="tel"
-                        placeholder="Телефон 1"
-                        v-model="item.phone1"
-                      >
+                    <div class="row">
+                    <div class="col-md-6">
+                      <div class="form__item">
+                        <masked-input class="input form-control" v-model="item.phone1" mask="\+\38 (011) 111 -11-11" placeholder="Телефон 1" />
+                      
+                      </div>
                     </div>
-                    <div class="form__item">
-                      <input
-                        class="input form-control"
-                        type="tel"
-                        placeholder="Телефон 2"
-                        v-model="item.phone2"
-                      >
+                    <div class="col-md-6">
+                      <div class="form__item">
+                        <span>
+                          <input class type="checkbox" 
+                                id="viber"
+                                v-model="item.viber1"
+                                >
+                          <label for="viber"> Viber</label>
+                        </span>
+                        <span>
+                          <input class type="checkbox" 
+                                id="telegram"
+                                v-model="item.telegram1"
+                                >
+                          <label for="telegram"> Telegram</label>
+                        </span><br>
+                        <span>
+                          <input class type="checkbox" 
+                                id="whatsapp"
+                                v-model="item.whatsapp1"
+                                >
+                          <label for="whatsapp"> Whatsapp</label>
+                        </span>
+                      </div>
                     </div>
-                   
-                    <div class="form__item">
-                      <input
-                        class="input form-control"
-                        type="text"
-                        placeholder="viber"
-                        v-model="item.viber"
-                        
-                      >
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form__item">
+                        <masked-input class="input form-control" v-model="item.phone2" mask="\+\38 (011) 111 -11-11" placeholder="Телефон 2" />
+                      
+                      </div>
                     </div>
-                    <div class="form__item">
-                      <input
-                        class="input form-control"
-                        type="text"
-                        placeholder="telegram"
-                        v-model="item.telegram"
-                        
-                      >
+                    <div class="col-md-6">
+                      <div class="form__item">
+                        <span>
+                          <input class type="checkbox" 
+                                id="viber"
+                                v-model="item.viber2"
+                                >
+                          <label for="viber"> Viber</label>
+                        </span>
+                        <span>
+                          <input class type="checkbox" 
+                                id="telegram"
+                                v-model="item.telegram2"
+                                >
+                          <label for="telegram"> Telegram</label>
+                        </span><br>
+                        <span>
+                          <input class type="checkbox" 
+                                id="whatsapp"
+                                v-model="item.whatsapp2"
+                                >
+                          <label for="whatsapp"> Whatsapp</label>
+                        </span>
+                      </div>
                     </div>
-                    <div class="form__item">
-                      <input
-                        class="input form-control"
-                        type="text"
-                        placeholder="whatsapp"
-                        v-model="item.whatsapp"
-                        
-                      >
-                    </div>
+                  </div>
                     <div class="form__item">
                       <input
                         class="input form-control"
@@ -207,10 +230,12 @@
 </template>
 
 <script>
-
+import MaskedInput from 'vue-masked-input'
 export default {
   name: "editCompany",
-  
+  components: {
+    MaskedInput
+  },
   data() {
     return {
       short_name: null,
@@ -228,9 +253,13 @@ export default {
         id: this.nextContact++,
         fio: "",
         phone1: "",
-        viber: "",
-        telegram: "",
-        whatsapp: "",
+        phone2: "",
+        viber1: "",
+        viber2: "",
+        telegram1: "",
+        telegram2: "",
+        whatsapp1: "",
+        whatsapp2: "",
         skype: ""
       });
     },
