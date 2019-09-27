@@ -3,35 +3,33 @@
     <div class="container" v-if="textContent">
       <div class="row">
         <div class="col">
-          <div class="title">
-            Наша продукция
-          </div>
+          <div class="title">Наша продукция</div>
         </div>
       </div>
 
       <carousel
-                :perPageCustom="[[320, 1], [768, 2], [1024, 3]]"
-                :paginationEnabled="false"
-                :navigationEnabled="true"
-                >
+        :perPageCustom="[[320, 1], [768, 2], [1024, 3]]"
+        :paginationEnabled="false"
+        :navigationEnabled="true"
+      >
         <slide>
           <div class="product-slider__item">
-            <img class="product-slider__image" src="../assets/images/pic-1.jpg" alt="">
+            <img class="product-slider__image" src="../assets/images/pic-1.jpg" alt />
           </div>
         </slide>
         <slide>
           <div class="product-slider__item">
-            <img class="product-slider__image" src="../assets/images/pic-2.jpg" alt="">
+            <img class="product-slider__image" src="../assets/images/pic-2.jpg" alt />
           </div>
         </slide>
         <slide>
           <div class="product-slider__item">
-            <img class="product-slider__image" src="../assets/images/pic-3.jpg" alt="">
+            <img class="product-slider__image" src="../assets/images/pic-3.jpg" alt />
           </div>
         </slide>
         <slide>
           <div class="product-slider__item">
-            <img class="product-slider__image" src="../assets/images/pic-1.jpg" alt="">
+            <img class="product-slider__image" src="../assets/images/pic-1.jpg" alt />
           </div>
         </slide>
       </carousel>
@@ -39,10 +37,8 @@
       <div class="row justify-content-md-center">
         <div class="col-xl-8">
           <div class="text-block">
-            <div class="text-block__content" >
-              <p>
-               {{ textContent.our_products }}
-              </p>
+            <div class="text-block__content">
+              <p>{{ textContent.our_products }}</p>
             </div>
           </div>
         </div>
@@ -52,21 +48,21 @@
 </template>
 
 <script>
-  import { Carousel, Slide } from 'vue-carousel';
+import { Carousel, Slide } from "vue-carousel";
 
-  export default {
-    name: 'Slider',
-    components: {
-      Carousel,
-      Slide
-    },
-    mounted() {
-      this.$store.dispatch('getTextContent');   
-    },
-    computed: {
-      textContent() {
+export default {
+  name: "Slider",
+  components: {
+    Carousel,
+    Slide
+  },
+  mounted() {
+    this.$store.dispatch("getTextContent");
+  },
+  computed: {
+    textContent() {
       return this.$store.getters.textContent;
-    },
-    },
+    }
   }
+};
 </script>

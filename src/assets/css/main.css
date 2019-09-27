@@ -552,6 +552,14 @@ input:focus:-ms-input-placeholder {
   text-decoration: none;
 }
 
+.button_hidden {
+  display: none;
+}
+
+.button.show {
+  display: block;
+}
+
 .button_order {
   background-color: #779453;
   text-transform: uppercase;
@@ -561,7 +569,7 @@ input:focus:-ms-input-placeholder {
 
 @media (max-width: 991px) {
   .button_order {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
@@ -1064,13 +1072,21 @@ input:focus:-ms-input-placeholder {
 }
 
 .nav-profile {
+  height: 100%;
   background-color: rgba(163, 150, 129, 0.7);
   padding: 30px 0;
 }
 
 .nav-profile ul {
+  margin: 0;
   padding: 0;
   list-style-type: none;
+}
+
+@media (max-width: 767px) {
+  .nav-profile ul {
+    text-align: center;
+  }
 }
 
 .nav-profile li:hover {
@@ -1088,9 +1104,28 @@ input:focus:-ms-input-placeholder {
   text-decoration: none;
 }
 
+@media (max-width: 991px) {
+  .nav-profile a {
+    padding-left: 20px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .nav-profile a {
+    padding: 10px;
+  }
+}
+
 .company__wrapper {
   width: 75%;
   margin: auto;
+}
+
+@media (max-width: 767px) {
+  .company__wrapper {
+    width: 100%;
+  }
 }
 
 .company__item {
@@ -1139,9 +1174,27 @@ input:focus:-ms-input-placeholder {
   padding: 5px 15px;
 }
 
+@media (max-width: 991px) {
+  .boxInfo__item img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 991px) {
+  .boxInfo__item input {
+    width: 100%;
+  }
+}
+
 .boxInfo__name {
   font-size: 18px;
   font-weight: bold;
+}
+
+@media (max-width: 991px) {
+  .boxInfo__name {
+    font-size: 16px;
+  }
 }
 
 .boxInfo__submit {
@@ -1153,6 +1206,12 @@ input:focus:-ms-input-placeholder {
   width: 300px;
   margin: auto;
   text-align: center;
+}
+
+@media (max-width: 767px) {
+  .boxInfo__add-button-block {
+    width: 100%;
+  }
 }
 
 .boxInfo__add-list {
@@ -1177,6 +1236,18 @@ input:focus:-ms-input-placeholder {
 
 .boxInfo__add-list li:hover {
   background-color: #e6e6e6;
+}
+
+@media (max-width: 767px) {
+  .del {
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .del img {
+    width: 25px;
+  }
 }
 
 .order-history__item {
@@ -1204,4 +1275,26 @@ input:focus:-ms-input-placeholder {
 
 .order-history__number {
   font-family: "DroidSansBold";
+}
+
+.order-details__block {
+  background: #fff;
+  margin-bottom: 10px;
+  padding: 5px 15px;
+}
+
+.order-details__item {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+
+.order-details__date-status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }

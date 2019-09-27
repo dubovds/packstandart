@@ -2,48 +2,28 @@
   <nav class="nav-profile">
     <ul>
       <li>
-        <a href="/profile/checkout">
-          Оформить заказ
-        </a>
+        <router-link :to="'/profile/checkout'">Оформить заказ</router-link>
       </li>
       <li>
-        <a href="/profile/order-history">
-          История заказов
-        </a>
+        <router-link :to="'/profile/order-history'">История заказов</router-link>
       </li>
       <li>
-        <router-link
-                  class=""
-                  :to="'/profile/catalog'"
-                >
-                Справочник изделий
-        </router-link>
+        <router-link class :to="'/profile/catalog'">Справочник изделий</router-link>
       </li>
       <li>
-        <a href="/profile/archive">
-          Архив изделий
-        </a>
+        <router-link :to="'/profile/archive'">Архив изделий</router-link>
       </li>
       <li>
-        <router-link
-                  class=""
-                  :to="'/profile/companies'"
-                >
-                Мои компании
-        </router-link>
-        
+        <router-link class :to="'/profile/companies'">Мои компании</router-link>
       </li>
       <li>
-        <a href="/profile/edit-profile">
-          Личные данные
-        </a>
+        <router-link :to="'/profile/edit-profile'">Личные данные</router-link>
       </li>
     </ul>
   </nav>
 </template>
 
 <script>
-
 export default {
   name: "Navigation-profile",
 
@@ -53,11 +33,11 @@ export default {
     };
   },
   computed: {
-    nav(){
-      return this.$store.getters.nav
+    nav() {
+      return this.$store.getters.nav;
     },
-    navAuth(){
-      return this.$store.getters.navAuth
+    navAuth() {
+      return this.$store.getters.navAuth;
     }
   }
 };

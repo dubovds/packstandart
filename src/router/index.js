@@ -13,6 +13,7 @@ import checkout from '@/pages/profile/checkout'
 import myCompanies from '@/pages/profile/my-companies'
 import addCompanies from '@/pages/profile/add-companies'
 import editCompany from '@/pages/profile/edit-company'
+import orederDetails from '@/pages/profile/order-details'
 import orderHistory from '@/pages/profile/order-history'
 import editProfile from '@/pages/profile/edit-profile'
 import card from '@/pages/profile/card'
@@ -23,8 +24,7 @@ Vue.use(Router);
 
 export default new Router({
   mode: 'history',
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: '',
       component: Home
@@ -58,8 +58,7 @@ export default new Router({
       path: '/profile',
       name: 'profile',
       component: Profile,
-      children:[
-        {
+      children: [{
           path: 'checkout',
           name: 'checkout',
           component: checkout
@@ -78,6 +77,11 @@ export default new Router({
           path: 'edit-company/:id',
           name: 'editCompany',
           component: editCompany
+        },
+        {
+          path: 'order-details/:id',
+          name: 'orederDetails',
+          component: orederDetails
         },
         {
           path: 'edit-profile',

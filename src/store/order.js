@@ -7,7 +7,8 @@ export default {
     allBoxes: null,
     archiveBoxesForPerson: null,
     boxesForPerson: null,
-    orderHistory: null
+    orderHistory: null,
+    orderInfo: null
   },
 
   mutations: {
@@ -22,62 +23,92 @@ export default {
     },
     arrayOrderHistory: (state, payload) => {
       state.orderHistory = payload
+    },
+    arrayOrderInfo: (state, payload) => {
+      state.orderInfo = payload
     }
   },
 
   actions: {
-    getAllBoxes({commit}) {
+    getAllBoxes({
+      commit
+    }) {
       axios
-        .get("/person/product/",{
-          params:{
+        .get("/person/product/", {
+          params: {
             person: person_uuid
           }
         })
         .then(response => {
-          commit("arrayAllBoxes",response.data);
+          commit("arrayAllBoxes", response.data);
         })
     },
 
-    async addOrder( context , {newOrder} ) {
+    async addOrder(context, {
+      newOrder
+    }) {
       axios
         .post("/person/order/", newOrder)
         .then(response => {
-          console.log(response);      
+          console.log(response);
         })
     },
-    getArchiveBoxes({commit}) {
+    getArchiveBoxes({
+      commit
+    }) {
       axios
-        .get("/person/product/",{
-          params:{
+        .get("/person/product/", {
+          params: {
             person: person_uuid,
             archival: 'True'
           }
         })
         .then(response => {
-          commit("arrayArchiveBoxesForPerson",response.data);
+          commit("arrayArchiveBoxesForPerson", response.data);
         })
     },
-    getPersonBoxes({commit}) {
+    getPersonBoxes({
+      commit
+    }) {
       axios
-        .get("/person/product/",{
-          params:{
+        .get("/person/product/", {
+          params: {
             person: person_uuid,
             archival: 'False'
           }
         })
         .then(response => {
-          commit("arrayBoxesForPerson",response.data);
+          commit("arrayBoxesForPerson", response.data);
         })
     },
-    getOrders({commit}) {
+    getOrders({
+      commit
+    }) {
       axios
-        .get("/person/order/",{
-          params:{
+        .get("/person/order/", {
+          params: {
             person: person_uuid
           }
         })
         .then(response => {
-          commit("arrayOrderHistory",response.data);
+          commit("arrayOrderHistory", response.data);
+        })
+    },
+    getOrderDetails({
+      commit
+    }, {
+      id,
+      person_uuid
+    }) {
+      axios
+        .get("/person/order/", {
+          params: {
+            person: person_uuid,
+            order: id
+          }
+        })
+        .then(response => {
+          commit("arrayOrderInfo", response.data);
         })
     },
   },
@@ -94,6 +125,9 @@ export default {
     },
     orderHistory(state) {
       return state.orderHistory
+    },
+    orderInfo(state) {
+      return state.orderInfo
     }
   }
 }

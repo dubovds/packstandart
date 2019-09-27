@@ -5,9 +5,20 @@
     margin-bottom: 10px
     padding: 5px 15px
 
+    img
+      @include tablet
+        width: 100%
+
+    input
+      @include tablet
+        width: 100%
+
   &__name
     font-size: 18px
     font-weight: bold
+
+    @include tablet
+      font-size: 16px
 
   &__submit
     font-size: 14px
@@ -17,6 +28,9 @@
     width: 300px
     margin: auto
     text-align: center  
+
+    @include mobile
+      width: 100%
 
   &__add-list
     list-style-type: none
@@ -37,3 +51,11 @@
       
       &:hover
         background-color: darken(#fff,10%)
+
+.del
+
+  @include mobile
+    text-align: center 
+  img
+    @include mobile
+      width: 25px
