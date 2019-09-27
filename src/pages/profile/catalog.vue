@@ -12,7 +12,7 @@
                     <img src="@/assets/images/box.png" alt />
                   </div>
                   <div class="col-sm-3">
-                    <input type="hidden" v-bind:value="item.uuid">
+                    <input type="hidden" v-bind:value="item.uuid" />
                     <div class="boxInfo__name">{{ item.name }}</div>
                     <div class="boxInfo__submit">
                       Техкарта
@@ -32,12 +32,12 @@
             <div class="row">
               <div class="col-6">
                 <button class="button button_registration">
-                  <a href="/profile/card">Оставить заявку на новую техкарту</a>
+                  <router-link :to="'/profile/card'">Оставить заявку на новую техкарту</router-link>
                 </button>
               </div>
               <div class="col-6">
                 <button class="button button_registration">
-                  <a href="/profile/checkout">Перейти к оформлению заказа</a>
+                  <router-link :to="'/profile/checkout'">Перейти к оформлению заказа</router-link>
                 </button>
               </div>
             </div>

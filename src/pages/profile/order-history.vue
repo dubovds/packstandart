@@ -5,7 +5,6 @@
         <div class="col-xl-12 col-md-11 col-12">
           <div class="form-block">
             <div class="title title_form">История заказов</div>
-            {{orderHistory}}
             <div class="order-history">
               <div class="order-history__item" v-for="item in orderHistory" v-bind:key="item.uuid">
                 <div class="order-history__block">
