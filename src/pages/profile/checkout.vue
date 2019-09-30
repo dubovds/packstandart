@@ -108,7 +108,9 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch("getAllBoxes");
+    this.$store.dispatch("getAllBoxes", {
+      person_uuid: this.uuidPerson
+    });
     this.$store.dispatch("getAllCompanies", {
       person_uuid: this.uuidPerson
     });

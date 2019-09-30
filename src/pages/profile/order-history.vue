@@ -44,12 +44,18 @@ export default {
   data() {
     return {};
   },
+  methods: {},
   mounted() {
-    this.$store.dispatch("getOrders");
+    this.$store.dispatch("getOrders", {
+      person_uuid: this.uuidPerson
+    });
   },
   computed: {
     orderHistory() {
       return this.$store.getters.orderHistory;
+    },
+    uuidPerson() {
+      return this.$store.getters.uuidPerson;
     }
   }
 };

@@ -1,5 +1,5 @@
 import axios from '../backend/vue-axios'
-const person_uuid = localStorage.getItem('person_uuid')
+// const person_uuid = localStorage.getItem('person_uuid')
 
 export default {
 
@@ -32,6 +32,8 @@ export default {
   actions: {
     getAllBoxes({
       commit
+    }, {
+      person_uuid
     }) {
       axios
         .get("/person/product/", {
@@ -55,6 +57,8 @@ export default {
     },
     getArchiveBoxes({
       commit
+    }, {
+      person_uuid
     }) {
       axios
         .get("/person/product/", {
@@ -69,6 +73,8 @@ export default {
     },
     getPersonBoxes({
       commit
+    }, {
+      person_uuid
     }) {
       axios
         .get("/person/product/", {
@@ -83,6 +89,8 @@ export default {
     },
     getOrders({
       commit
+    }, {
+      person_uuid
     }) {
       axios
         .get("/person/order/", {

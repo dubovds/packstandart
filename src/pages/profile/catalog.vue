@@ -55,13 +55,17 @@ export default {
   data() {
     return {};
   },
+  methods: {},
   computed: {
     boxesForPerson() {
       return this.$store.getters.boxesForPerson;
+    },
+    uuidPerson() {
+      return this.$store.getters.uuidPerson;
     }
   },
   mounted() {
-    this.$store.dispatch("getPersonBoxes");
+    this.$store.dispatch("getPersonBoxes", { person_uuid: this.uuidPerson });
   }
 };
 </script>
